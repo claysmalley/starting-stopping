@@ -91,6 +91,12 @@ fingerTABC = \markup
   \general-align #X #CENTER \fingerT
 }
 
+mostlystopped = \markup {
+  \combine
+  \abs-fontsize #12 \musicglyph "scripts.halfopenvertical"
+  \abs-fontsize #12 \musicglyph "scripts.tenuto"
+}
+
 staccatoExercise = \relative c'' {
   f2^\open
   f2^\stopped |
@@ -104,10 +110,6 @@ staccatoExercise = \relative c'' {
     f8^\stopped[
     f8^\stopped]
   } |
-  % \repeat unfold 4 {
-  %   f8^\open[
-  %   f8^\stopped]
-  % } |
   f2^\open
   r2 |
 }
@@ -328,7 +330,28 @@ staccatoExercise = \relative c'' {
 \score {
   \header {
     piece = \markup \concat { \box { A } " Stopped Pitch Bends" }
-    subpiece = "Gradually transition from open to stopped and back, bending the pitch as far as possible."
+    subpiece = \markup \wordwrap {
+      Gradually transition from open (
+      \fontsize #1 \center-column {
+        \musicglyph "noteheads.s1"
+        \vspace #-1.5
+        \musicglyph "scripts.open"
+      }
+      ) to stopped (
+      \fontsize #1 \center-column {
+        \musicglyph "noteheads.s1"
+        \vspace #-1.5
+        \musicglyph "scripts.stopped"
+      }
+      ) tones and back.
+      In lower partials, add an echo tone (
+      \fontsize #1 \center-column {
+        \musicglyph "noteheads.s1"
+        \vspace #-1.5
+        \mostlystopped
+      }
+      ) in between.
+    }
   }
   \layout {
     \context {
@@ -338,57 +361,77 @@ staccatoExercise = \relative c'' {
   }
   \new Staff
   \relative c'' {
+    \accidentalStyle Score.modern
     \time 4/4
     \tempo 4 = 120 - 176
-    f2^\open\glissando\p\<(^\markup \italic \concat { "B" \super \flat " horn, half steps" }
+    \centermarkup f2\glissando\p\<^\fingerTO
     e2^\stopped\glissando\ff\> |
-    f2^\open\p\!) r |
-    \bar "||"
-    e2^\open\glissando\<(
+    f2^\open\p\! r
+    \centermarkup e2\glissando\<^\fingerTB
     dis2^\stopped\glissando\> |
-    e2^\open\!) r |
+    e2^\open\! r |
+    \centermarkup ees2\glissando\<^\fingerTA
+    d2^\stopped\glissando\> |
+    ees2^\open\! r |
+    \centermarkup d2\glissando\<^\fingerTAB
+    cis2^\stopped\glissando\> |
+    d2^\open\! r |
+    \centermarkup des2\glissando\<^\fingerTBC
+    c2^\stopped\glissando\> |
+    des2^\open\! r |
     \bar "||"
-    s4
-    \stopStaff
-    s2_\markup \bold "…"
-    \startStaff
-    s4
-    \bar "||"
-    c2^\open\glissando\<(^\markup \italic "F horn, half steps"
+    \centermarkup c2\glissando\<^\fingerA
     b2^\stopped\glissando\> |
-    c2^\open\!) r |
+    c2^\open\! r |
+    \centermarkup b2\glissando\<^\fingerAB
+    ais2^\stopped\glissando\> |
+    b2^\open\! r |
+    \centermarkup bes2\glissando\<^\fingerBC
+    a2^\stopped\glissando\> |
+    bes2^\open\! r |
     \bar "||"
-    s4
-    \stopStaff
-    s2_\markup \bold "…"
-    \startStaff
-    s4
+    \centermarkup bes2\glissando\<^\fingerO
+    aes2^\stopped\glissando\> |
+    bes2^\open\! r |
+    \centermarkup a2\glissando\<^\fingerB
+    g2^\stopped\glissando\> |
+    a2^\open\! r |
+    \centermarkup aes2\glissando\<^\fingerA
+    ges2^\stopped\glissando\> |
+    aes2^\open\! r |
     \bar "||"
     \break
-    g2^\open\glissando\<(^\markup \italic "whole steps"
-    f2^\stopped\glissando\> |
-    g2^\open\!) r |
+    \centermarkup g2\glissando^\fingerO
+    \centermarkup fis2^\mostlystopped\glissando\< |
+    f2^\stopped\glissando\>
+    \centermarkup fis2^\mostlystopped\glissando\! |
+    g2^\open r |
+    \centermarkup ges2\glissando^\fingerB
+    \centermarkup f2^\mostlystopped\glissando\< |
+    e2^\stopped\glissando\>
+    \centermarkup f2^\mostlystopped\glissando\! |
+    ges2^\open r |
+    \centermarkup f2\glissando^\fingerA
+    \centermarkup e2^\mostlystopped\glissando\< |
+    dis2^\stopped\glissando\>
+    \centermarkup e2^\mostlystopped\glissando\! |
+    f2^\open r |
+    \centermarkup e2\glissando^\fingerAB
+    \centermarkup dis2^\mostlystopped\glissando\< |
+    d2^\stopped\glissando\>
+    \centermarkup dis2^\mostlystopped\glissando\! |
+    e2^\open r |
     \bar "||"
-    s4
-    \stopStaff
-    s2_\markup \bold "…"
-    \startStaff
-    s4
-    \bar "||"
-    e2^\open\glissando\<(^\markup \italic "minor thirds"
-    cis2^\stopped\glissando\> |
-    e2^\open\!) r |
-    \bar "||"
-    s4
-    \stopStaff
-    s2_\markup \bold "…"
-    \startStaff
-    s4
-    \bar "||"
-    \bar "||"
-    c!2^\open\glissando\<(^\markup \italic "major thirds"
-    aes2^\stopped\glissando\> |
-    c2^\open\!) r |
+    \centermarkup e2\glissando^\fingerO
+    \centermarkup dis2^\mostlystopped\glissando\< |
+    cis2^\stopped\glissando\>
+    \centermarkup dis2^\mostlystopped\glissando\! |
+    e2^\open r |
+    \centermarkup ees2\glissando^\fingerB
+    \centermarkup d2^\mostlystopped\glissando\< |
+    c2^\stopped\glissando\>
+    \centermarkup d2^\mostlystopped\glissando\! |
+    ees2^\open r |
     \bar "|."
   }
 }
