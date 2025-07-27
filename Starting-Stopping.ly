@@ -4,7 +4,8 @@
 
 date = #(strftime "%Y–%m–%d" (localtime (current-time)))
 \header {
-  tagline = \markup \concat {
+  tagline = ##f
+  copyright = \markup \concat {
     \italic "CC0, no rights reserved · last updated "
     \italic \date
     " · github.com/claysmalley/starting-stopping"
@@ -88,6 +89,27 @@ fingerTABC = \markup
 \dir-column {
   \general-align #X #CENTER \fingerABC
   \general-align #X #CENTER \fingerT
+}
+
+staccatoExercise = \relative c'' {
+  f2^\open
+  f2^\stopped |
+  \repeat unfold 2 {
+    f4^\open
+    f4^\stopped
+  } |
+  \repeat unfold 2 {
+    f8^\open[
+    f8^\open]
+    f8^\stopped[
+    f8^\stopped]
+  } |
+  % \repeat unfold 4 {
+  %   f8^\open[
+  %   f8^\stopped]
+  % } |
+  f2^\open
+  r2 |
 }
 
 \markup \wordwrap {
@@ -370,6 +392,7 @@ fingerTABC = \markup
     \bar "|."
   }
 }
+\pageBreak
 \score {
   \header {
     piece = \markup \concat { \box { B } " Stopped Staccato" }
@@ -383,38 +406,47 @@ fingerTABC = \markup
   }
   \new Staff
   \relative c'' {
+    \accidentalStyle Score.modern
     \time 4/4
     \tempo 4 = 76 - 120
-    f2^\open_\f
-    f2^\stopped |
-    \repeat unfold 2 {
-      f4^\open
-      f4^\stopped
-    } |
-    \repeat unfold 2 {
-      f8^\open
-      f8^\open
-      f8^\stopped
-      f8^\stopped
-    } |
-    \repeat unfold 4 {
-      f8^\open[
-      f8^\stopped]
-    } |
-    f2^\open
-    r2 |
+    <<
+      s1\f
+      \staccatoExercise
+    >>
     \bar "||"
-    e2^\open
-    e2^\stopped |
-    \bar "|"
-    s4
-    \stopStaff
-    s2_\markup \bold "…"
-    \startStaff
-    s4
-    \bar "|"
-    c,2^\open
-    r2 |
+    \transpose f e \staccatoExercise
+    \bar "||"
+    \transpose f ees \staccatoExercise
+    \bar "||"
+    \transpose f d \staccatoExercise
+    \bar "||"
+    \transpose f des \staccatoExercise
+    \bar "||"
+    \transpose f c \staccatoExercise
+    \bar "||"
+    \transpose f b, \staccatoExercise
+    \bar "||"
+    \transpose f bes, \staccatoExercise
+    \bar "||"
+    \transpose f a, \staccatoExercise
+    \bar "||"
+    \transpose f aes, \staccatoExercise
+    \bar "||"
+    \transpose f g, \staccatoExercise
+    \bar "||"
+    \transpose f fis, \staccatoExercise
+    \bar "||"
+    \transpose f f, \staccatoExercise
+    \bar "||"
+    \transpose f e, \staccatoExercise
+    \bar "||"
+    \transpose f ees, \staccatoExercise
+    \bar "||"
+    \transpose f d, \staccatoExercise
+    \bar "||"
+    \transpose f des, \staccatoExercise
+    \bar "||"
+    \transpose f c, \staccatoExercise
     \bar "|."
   }
 }
