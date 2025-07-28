@@ -162,6 +162,7 @@ overrideThreeHalfFlat = {
 \score {
   \new Staff
   \relative c'' {
+    \accidentalStyle Score.forget
     \set Score.timing = ##f
     \omit Staff.TimeSignature
     s1024_\markup \small \italic "open"
@@ -238,7 +239,7 @@ overrideThreeHalfFlat = {
   }
 }
 \markup \wordwrap {
-  So, on the F horn, \bold { fingering one half step down while stopped } is a useful mnemonic:
+  So, on the F horn, fingering a half step down while stopped is a useful mnemonic:
 }
 \markup \null
 \score {
@@ -333,21 +334,26 @@ overrideThreeHalfFlat = {
   \header {
     piece = \markup \concat { \box { A } " Short Pitch Bends" }
     subpiece = \markup \wordwrap {
-      Use the suggested fingerings to match intonation between open (
+      Begin by playing the pattern on valve horn,
+      using the suggested fingerings
+      with the bell open (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
         \vspace #-1.4
         \musicglyph "scripts.open"
       }
-      ) and stopped (
+      ),
+      no matter how unconventional they may be.
+      Upon returning to the upper pitch,
+      gradually transition from open to stopped (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
         \vspace #-1.4
         \musicglyph "scripts.stopped"
       }
-      ) tones.
-      Gradually transition from open to stopped and back,
-      using more pressure on the stopped tone.
+      ) and back,
+      applying more pressure when stopped.
+      Match intonation between open and stopped tones.
     }
   }
   \new Staff
@@ -428,27 +434,19 @@ overrideThreeHalfFlat = {
   \header {
     piece = \markup \concat { \box { B } " Long Pitch Bends" }
     subpiece = \markup \wordwrap {
-      Use the suggested fingerings to match intonation between open (
-      \fontsize #1 \center-column {
-        \musicglyph "noteheads.s1"
-        \vspace #-1.4
-        \musicglyph "scripts.open"
-      }
-      ), echo (
+      Begin by playing the pattern on valve horn,
+      using the suggested fingerings with the bell open.
+      Upon returning to the upper pitch,
+      gradually transition from open
+      to echo (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
         \vspace #-1.4
         \mostlystopped
       }
-      ) and stopped (
-      \fontsize #1 \center-column {
-        \musicglyph "noteheads.s1"
-        \vspace #-1.4
-        \musicglyph "scripts.stopped"
-      }
-      ) tones.
-      Gradually transition from open to echo to stopped and back,
-      using more pressure on the stopped tone.
+      ) to stopped and back,
+      applying more pressure when stopped.
+      Match intonation between all tones.
     }
   }
   \new Staff
