@@ -29,8 +29,8 @@ date = #(strftime "%Y–%m–%d" (localtime (current-time)))
 centermarkup = {
   \once \override TextScript.self-alignment-X = #CENTER
   \once \override TextScript.X-offset = #(lambda (g)
-    (+ (ly:self-alignment-interface::centered-on-x-parent g)
-       (ly:self-alignment-interface::x-aligned-on-self g)))
+  (+ (ly:self-alignment-interface::centered-on-x-parent g)
+     (ly:self-alignment-interface::x-aligned-on-self g)))
 }
 
 fingerT = \markup \abs-fontsize #6 \bold T
@@ -125,145 +125,116 @@ staccatoExercise = \relative c'' {
   Historically, this was done on valveless, or \italic natural, horns,
   to reach pitches in between those along the harmonic series.
   Nowadays, on valve horns, the right hand is mostly used to make fine adjustments to intonation, 
-  as well as playing stopped tones (
+  as well as playing stopped (
   \center-column {
     \musicglyph "noteheads.s1"
     \vspace #-1.5
     \musicglyph "scripts.stopped"
   }
-  ) with a buzzy, muffled timbre.
-  But good hand horn technique is still essential to modern valve horn playing.
+  ) and echo (
+  \center-column {
+    \musicglyph "noteheads.s1"
+    \vspace #-1.5
+    \mostlystopped
+  }
+  ) tones.
 }
-\markup \line {
-  \column {
-    \null
-    \score {
-      <<
-        \new Staff
-        \relative c'' {
-          \set Score.timing = ##f
-          \omit Staff.TimeSignature
-          <<
-            {
-              \override Stem.length = 0
-              \set fingeringOrientations = #'(left)
-              \override Fingering.whiteout = ##t
-              <bes-7>2\glissando aes_\stopped
-            }
-            \\
-            {
-              \override Stem.length = 0
-              \set fingeringOrientations = #'(left)
-              \override Fingering.whiteout = ##t
-              <g-6>4_\open
-            }
-          >>
-        }
-        \new Staff
-        \relative c'' {
-          \set Score.timing = ##f
-          \omit Staff.TimeSignature
-          <<
-            {
-              \override Stem.length = 0
-              \set fingeringOrientations = #'(left)
-              \override Fingering.whiteout = ##t
-              <g-6>2\glissando f_\stopped
-            }
-            \\
-            {
-              \override Stem.length = 0
-              \set fingeringOrientations = #'(left)
-              \override Fingering.whiteout = ##t
-              <e-5>4_\open
-            }
-          >>
-        }
-        \new Staff
-        \relative c' {
-          \set Score.timing = ##f
-          \omit Staff.TimeSignature
-          <<
-            {
-              \override Stem.length = 0
-              \set fingeringOrientations = #'(left)
-              \override Fingering.whiteout = ##t
-              <e-5>2\glissando des_\stopped
-            }
-            \\
-            {
-              \override Stem.length = 0
-              \set fingeringOrientations = #'(left)
-              \override Fingering.whiteout = ##t
-              <c-4>4_\open
-            }
-          >>
-        }
-        \new Staff
-        \relative c' {
-          \set Score.timing = ##f
-          \omit Staff.TimeSignature
-          <<
-            {
-              \override Stem.length = 0
-              \set fingeringOrientations = #'(left)
-              \override Fingering.whiteout = ##t
-              <c-4>2\glissando aes_\stopped
-            }
-            \\
-            {
-              \override Stem.length = 0
-              \set fingeringOrientations = #'(left)
-              \override Fingering.whiteout = ##t
-              <g-3>4_\open
-            }
-          >>
-        }
-      >>
-    }
-    \null
-    \italic \small \override #'(line-width . 17) \override #'(baseline-skip . 2.5) \wordwrap {
-      relationship between open and stopped tones,
-      with partial numbers on the left
-    }
+\markup \null
+\markup \wordwrap {
+  An everlasting source of confusion for new hornists
+  is whether stopping the bell raises or lowers the pitch produced.
+  By playing a long tone and gradually closing the bell,
+  one may notice that the pitch bends down,
+  and one can find a “mostly stopped” position that reliably flattens the horn by a half step.
+  But by sealing off as much of the bell as possible and playing with more pressure,
+  one may notice that the harmonic series has shifted a half step \italic upward:
+}
+\markup \null
+\score {
+  \new Staff
+  \relative c'' {
+    \set Score.timing = ##f
+    \omit Staff.TimeSignature
+    s1024_\markup \small \italic "open"
+    \centermarkup e4(^\fullopen d c beseh g e c2)
+    \bar "|"
+    s1024_\markup \small \italic "echo (mostly stopped)"
+    \centermarkup dis'4(^\mostlystopped cis b aeh fis dis b2)
+    \bar "|"
+    s1024_\markup \small \italic "fully stopped"
+    \centermarkup f''4(^\fullstopped ees des beh aes f des2)
+    \bar "|"
   }
-  "    "
-  \column {
-    \null
-    \override #'(line-width . 90) \wordwrap {
-      An everlasting source of confusion for new hornists
-      is whether stopping the bell raises or lowers the pitch produced.
-      By playing a long tone and gradually closing the bell,
-      one may notice that the pitch bends down by a half step or more.
-      But by playing a lip slur exercise on the F horn with an open bell,
-      then repeating it stopped,
-      one may notice that the harmonic series has shifted a half step \italic upward.
-    }
-    \null
-    \override #'(line-width . 90) \wordwrap {
-      So what is happening here?
-      Each open tone on the F horn indeed has a corresponding stopped tone a half step up,
-      but the stopped tone actually comes from bending down the next highest partial—a hidden barber pole effect.
-      Closing the bell lowers the pitch, all the way down to
-      \italic { one half step above the next lowest partial }
-      (or, on the \concat { B \super \flat } horn, a noticeably out-of-tune ¾ step above it).
-      In the first example on the left,
-      an open \concat { B \super \flat } in the \concat { 7 \super th } partial
-      can be bent down with the hand to a stopped \concat { A \super \flat , }
-      one half step above the \concat { 6 \super th } partial’s open G.
-    }
-    \null
-    \override #'(line-width . 90) \wordwrap {
-      So, on the F horn, \bold { fingering one half step down while stopped } is a useful mnemonic,
-      though certain fingerings can counteract the out-of-tune
-      \concat { 7 \super th } and \concat { 11 \super th } partials
-      and bring the stopped \concat { B \super \flat } horn back into tune.
-      Since these partials are rarely used otherwise,
-      mnemonics based on more recognizable fingerings for the
-      \concat { 8 \super th } and \concat { 12 \super th } partials,
-      respectively, are more common.
-    }
+}
+\markup \wordwrap {
+  So what is happening here?
+  Each open tone on the F horn indeed has a corresponding stopped tone a half step up,
+  but the stopped tone actually comes from bending down the next highest partial—a hidden barber pole effect.
+  Closing the bell lowers the pitch, all the way down to
+  \italic { one half step above the next lowest partial }
+  (or, on the \concat { B \super \flat } horn, a noticeably out-of-tune ¾ step above it).
+  For example,
+  the \concat { 5 \super th } and \concat { 6 \super th } partials produce an open E and G,
+  respectively.
+  One half step above the \concat { 5 \super th } partial’s E is F,
+  Which is the stopped tone that the \concat { 6 \super th } partial’s G can be bent down to.
+}
+\markup \null
+\score {
+  \new Staff
+  \relative c'' {
+    \set Score.timing = ##f
+    \omit Staff.TimeSignature
+    \override Stem.length = 0
+    \set fingeringOrientations = #'(left)
+    \override Fingering.whiteout = ##t
+
+    \once \override Glissando.bound-details.left.Y = #2
+    \once \override Glissando.bound-details.right.Y = #1
+    <e>2*2^\open\glissando_\markup
+    \italic \small \concat { 10 \super th " partial" }
+    ees4*4^\stopped
+    \bar "|"
+    \once \override Glissando.bound-details.left.Y = #1.5
+    \once \override Glissando.bound-details.right.Y = #0.5
+    <d>2*2^\open\glissando_\markup
+    \italic \small \concat { 9 \super th " partial" }
+    des4*4^\stopped
+    \bar "|"
+    <c>2*2^\open\glissando_\markup
+    \italic \small \concat { 8 \super th " partial" }
+    beh4*4^\stopped
+    \bar "|"
+    <beseh>2*2^\open\glissando_\markup
+    \italic \small \concat { 7 \super th " partial" }
+    aes4*4^\stopped
+    \bar "|"
+    <g>2*2^\open\glissando_\markup
+    \italic \small \concat { 6 \super th " partial" }
+    f4*4^\stopped
+    \bar "|"
+    <e>2*2^\open\glissando_\markup
+    \italic \small \concat { 5 \super th " partial" }
+    des4*4^\stopped
+    \bar "|"
+    <c>2*2^\open\glissando_\markup
+    \italic \small \concat { 4 \super th " partial" }
+    aes4*4^\stopped
+    \bar "|"
+    <g>2*2^\open_\markup
+    \italic \small \concat { 3 \super rd " partial" }
+    s4_\markup \bold \lower #1 "…"
   }
+}
+\markup \wordwrap {
+  So, on the F horn, \bold { fingering one half step down while stopped } is a useful mnemonic,
+  though certain fingerings can counteract the out-of-tune
+  \concat { 7 \super th } and \concat { 11 \super th } partials
+  and bring the stopped \concat { B \super \flat } horn back into tune.
+  Since these partials are rarely used otherwise,
+  mnemonics based on more recognizable fingerings for the
+  \concat { 8 \super th } and \concat { 12 \super th } partials,
+  respectively, are more common.
 }
 \markup \null
 \score {
@@ -275,7 +246,6 @@ staccatoExercise = \relative c'' {
   }
   \new Staff
   \relative c''' {
-    \accidentalStyle Score.forget
     \set Score.timing = ##f
     \omit Staff.TimeSignature
     \override Stem.length = 0
@@ -293,8 +263,9 @@ staccatoExercise = \relative c'' {
     \centermarkup aes4^\fingerTBC
     \centermarkup g4^\fingerTAC
     \centermarkup fis4^\fingerTABC
+    \stopStaff
     s4
-    \bar "|"
+    \startStaff
     s1024_\markup \small \italic \override #'(baseline-skip . 2.5) \column {
       \line { \concat { "B" \super \flat " horn, 7" \super th " partial:" } }
       \line { \concat { "use 8" \super th " partial fingerings" } }
@@ -305,14 +276,25 @@ staccatoExercise = \relative c'' {
     \centermarkup d4^\fingerTA
     \centermarkup des4^\fingerTAB
     \centermarkup c4^\fingerTBC
-    s4
-    \bar "||"
+  }
+}
+\score {
+  \layout {
+    \context {
+      \Score
+      \omit BarNumber
+    }
+  }
+  \new Staff
+  \relative c'' {
+    \set Score.timing = ##f
+    \omit Staff.TimeSignature
+    \override Stem.length = 0
+
+    \clef treble
+    s1024_\markup \small \italic "F horn: use any fingering one half step down"
     \centermarkup f4^\fingerO
     \centermarkup e4^\fingerB
-    s1024_\markup \small \italic \override #'(baseline-skip . 2.5) \column {
-      \line { "F horn: use any fingering" }
-      \line { "one half step down" }
-    }
     \centermarkup ees4^\fingerO
     \centermarkup d4^\fingerB
     \centermarkup des4^\fingerO
@@ -332,6 +314,7 @@ staccatoExercise = \relative c'' {
     s4_\markup \bold \lower #1 "…"
   }
 }
+\markup \null
 \pageBreak
 \score {
   \header {
@@ -371,7 +354,6 @@ staccatoExercise = \relative c'' {
     \centermarkup e2\glissando\<^\fingerTB(
     \centermarkup dis2^\fullstopped\glissando\> |
     \centermarkup e2^\fullopen)\! r |
-    \break
     \bar "||"
     \centermarkup ees2^\fingerTA(
     \centermarkup d2^\fingerTAB |
@@ -390,7 +372,6 @@ staccatoExercise = \relative c'' {
     \centermarkup des2^\fingerTBC(
     \centermarkup c2^\fingerTO |
     \centermarkup des2^\fingerTBC) r |
-    \break
     \centermarkup des2\glissando\<^\fingerTBC(
     \centermarkup c2^\fullstopped\glissando\> |
     \centermarkup des2^\fullopen)\! r |
@@ -408,7 +389,6 @@ staccatoExercise = \relative c'' {
     \centermarkup b2\glissando\<^\fingerAB(
     \centermarkup ais2^\fullstopped\glissando\> |
     \centermarkup b2^\fullopen)\! r |
-    \break
     \bar "||"
     \centermarkup bes2^\fingerBC(
     \centermarkup a2^\fingerAB |
@@ -423,7 +403,6 @@ staccatoExercise = \relative c'' {
     \centermarkup beseh2\glissando\<^\fingerO(
     \centermarkup aes2^\fullstopped\glissando\> |
     \centermarkup beseh2^\fullopen)\! r |
-    \break
     \bar "||"
     \centermarkup aeh2^\fingerB(
     \centermarkup g2^\fingerO |
@@ -451,21 +430,19 @@ staccatoExercise = \relative c'' {
         \vspace #-1.4
         \musicglyph "scripts.open"
       }
-      ), mostly stopped (
+      ), echo (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
         \vspace #-1.4
         \mostlystopped
       }
-      ) and fully stopped (
+      ) and stopped (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
         \vspace #-1.4
         \musicglyph "scripts.stopped"
       }
       ) tones.
-      When mostly stopped, the horn produces an \italic { echo tone, }
-      a half step below the open tone.
     }
   }
   \new Staff
