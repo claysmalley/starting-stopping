@@ -1,8 +1,8 @@
 # Starting Stopping
 This is a printable practice sheet for horn players being introduced to hand stopping technique.
-On two pages,
+On three pages,
 it includes an explanation of the history and mechanics of hand stopping,
-a fingering reference and two exercises.
+a fingering reference and three exercises.
 It assumes basic knowledge of the harmonic series,
 horn hand placement and double horn fingerings.
 

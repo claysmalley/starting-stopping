@@ -120,6 +120,15 @@ staccatoExercise = \relative c'' {
   r2 |
 }
 
+overrideHalfFlat = {
+  \once \override Accidental.stencil = #ly:text-interface::print
+  \once \override Accidental.text = \markup \musicglyph "accidentals.natural.arrowdown"
+}
+overrideThreeHalfFlat = {
+  \once \override Accidental.stencil = #ly:text-interface::print
+  \once \override Accidental.text = \markup \musicglyph "accidentals.flat.arrowdown"
+}
+
 \markup \wordwrap {
   One of the most noticeable differences between the horn and other brass instruments is the movement of the right hand in the bell.
   Historically, this was done on valveless, or \italic natural, horns,
@@ -156,13 +165,13 @@ staccatoExercise = \relative c'' {
     \set Score.timing = ##f
     \omit Staff.TimeSignature
     s1024_\markup \small \italic "open"
-    \centermarkup e4(^\fullopen d c beseh g e c2)
+    \centermarkup e4(^\fullopen d c \overrideThreeHalfFlat beseh g e c2)
     \bar "|"
     s1024_\markup \small \italic "echo (mostly stopped)"
-    \centermarkup dis'4(^\mostlystopped cis b aeh fis dis b2)
+    \centermarkup dis'4(^\mostlystopped cis b \overrideHalfFlat aeh fis dis b2)
     \bar "|"
     s1024_\markup \small \italic "fully stopped"
-    \centermarkup f''4(^\fullstopped ees des beh aes f des2)
+    \centermarkup f''4(^\fullstopped ees des \overrideThreeHalfFlat ceseh aes f des2)
     \bar "|"
   }
 }
@@ -177,7 +186,7 @@ staccatoExercise = \relative c'' {
   the \concat { 5 \super th } and \concat { 6 \super th } partials produce an open E and G,
   respectively.
   One half step above the \concat { 5 \super th } partial’s E is F,
-  Which is the stopped tone that the \concat { 6 \super th } partial’s G can be bent down to.
+  which is the stopped tone that the \concat { 6 \super th } partial’s G can be bent down to:
 }
 \markup \null
 \score {
@@ -191,50 +200,91 @@ staccatoExercise = \relative c'' {
 
     \once \override Glissando.bound-details.left.Y = #2
     \once \override Glissando.bound-details.right.Y = #1
-    <e>2*2^\open\glissando_\markup
+    e2*2^\open\glissando_\markup
     \italic \small \concat { 10 \super th " partial" }
     ees4*4^\stopped
     \bar "|"
     \once \override Glissando.bound-details.left.Y = #1.5
     \once \override Glissando.bound-details.right.Y = #0.5
-    <d>2*2^\open\glissando_\markup
+    d2*2^\open\glissando_\markup
     \italic \small \concat { 9 \super th " partial" }
     des4*4^\stopped
     \bar "|"
-    <c>2*2^\open\glissando_\markup
+    \once \override Glissando.bound-details.left.Y = #1
+    \once \override Glissando.bound-details.right.Y = #0
+    c2*2^\open\glissando_\markup
     \italic \small \concat { 8 \super th " partial" }
-    beh4*4^\stopped
+    \overrideThreeHalfFlat ceseh4*4^\stopped
     \bar "|"
-    <beseh>2*2^\open\glissando_\markup
+    \overrideThreeHalfFlat beseh2*2^\open\glissando_\markup
     \italic \small \concat { 7 \super th " partial" }
     aes4*4^\stopped
     \bar "|"
-    <g>2*2^\open\glissando_\markup
+    g2*2^\open\glissando_\markup
     \italic \small \concat { 6 \super th " partial" }
     f4*4^\stopped
     \bar "|"
-    <e>2*2^\open\glissando_\markup
+    e2*2^\open\glissando_\markup
     \italic \small \concat { 5 \super th " partial" }
     des4*4^\stopped
     \bar "|"
-    <c>2*2^\open\glissando_\markup
+    c2*2^\open\glissando_\markup
     \italic \small \concat { 4 \super th " partial" }
     aes4*4^\stopped
     \bar "|"
-    <g>2*2^\open_\markup
+    g2*2^\open_\markup
     \italic \small \concat { 3 \super rd " partial" }
     s4_\markup \bold \lower #1 "…"
   }
 }
 \markup \wordwrap {
-  So, on the F horn, \bold { fingering one half step down while stopped } is a useful mnemonic,
-  though certain fingerings can counteract the out-of-tune
+  So, on the F horn, \bold { fingering one half step down while stopped } is a useful mnemonic:
+}
+\markup \null
+\score {
+  \layout {
+    \context {
+      \Score
+      \omit BarNumber
+    }
+  }
+  \new Staff
+  \relative c'' {
+    \set Score.timing = ##f
+    \omit Staff.TimeSignature
+    \override Stem.length = 0
+
+    \clef treble
+    s1024_\markup \small \italic "F horn: use any fingering one half step down"
+    \centermarkup f4*2^\fingerO
+    \centermarkup e4*2^\fingerB
+    \centermarkup ees4*2^\fingerO
+    \centermarkup d4*2^\fingerB
+    \centermarkup des4*2^\fingerO
+    \centermarkup c4*2^\fingerB
+    \centermarkup b4*2^\fingerA
+    \centermarkup bes4*2^\fingerAB
+    \centermarkup a4*2^\fingerBC
+    \centermarkup aes4*2^\fingerO
+    \centermarkup g4*2^\fingerB
+    \centermarkup fis4*2^\fingerA
+    \centermarkup f4*2^\fingerO
+    \centermarkup e4*2^\fingerB
+    \centermarkup ees4*2^\fingerA
+    \centermarkup d4*2^\fingerAB
+    \centermarkup des4*2^\fingerO
+    \centermarkup c4*2^\fingerB
+    s4_\markup \bold \lower #1 "…"
+  }
+}
+\markup \wordwrap {
+  Though a limited set of fingerings can counteract the out-of-tune
   \concat { 7 \super th } and \concat { 11 \super th } partials
   and bring the stopped \concat { B \super \flat } horn back into tune.
   Since these partials are rarely used otherwise,
   mnemonics based on more recognizable fingerings for the
   \concat { 8 \super th } and \concat { 12 \super th } partials,
-  respectively, are more common.
+  respectively, are more common:
 }
 \markup \null
 \score {
@@ -256,62 +306,25 @@ staccatoExercise = \relative c'' {
       \line { \concat { "use 12" \super th " partial fingerings" } }
       \line { "for the same pitch" }
     }
-    \centermarkup c4^\fingerTO
-    \centermarkup b4^\fingerTB
-    \centermarkup bes4^\fingerTA
-    \centermarkup a4^\fingerTAB
-    \centermarkup aes4^\fingerTBC
-    \centermarkup g4^\fingerTAC
-    \centermarkup fis4^\fingerTABC
-    \stopStaff
-    s4
-    \startStaff
+    \centermarkup c4*2^\fingerTO
+    \centermarkup b4*2^\fingerTB
+    \centermarkup bes4*2^\fingerTA
+    \centermarkup a4*2^\fingerTAB
+    \centermarkup aes4*2^\fingerTBC
+    \centermarkup g4*2^\fingerTAC
+    \centermarkup fis4*2^\fingerTABC
+    \bar "|"
     s1024_\markup \small \italic \override #'(baseline-skip . 2.5) \column {
       \line { \concat { "B" \super \flat " horn, 7" \super th " partial:" } }
       \line { \concat { "use 8" \super th " partial fingerings" } }
       \line { "one half step up" }
     }
-    \centermarkup e4^\fingerTO
-    \centermarkup ees4^\fingerTB
-    \centermarkup d4^\fingerTA
-    \centermarkup des4^\fingerTAB
-    \centermarkup c4^\fingerTBC
-  }
-}
-\score {
-  \layout {
-    \context {
-      \Score
-      \omit BarNumber
-    }
-  }
-  \new Staff
-  \relative c'' {
-    \set Score.timing = ##f
-    \omit Staff.TimeSignature
-    \override Stem.length = 0
-
-    \clef treble
-    s1024_\markup \small \italic "F horn: use any fingering one half step down"
-    \centermarkup f4^\fingerO
-    \centermarkup e4^\fingerB
-    \centermarkup ees4^\fingerO
-    \centermarkup d4^\fingerB
-    \centermarkup des4^\fingerO
-    \centermarkup c4^\fingerB
-    \centermarkup b4^\fingerA
-    \centermarkup bes4^\fingerAB
-    \centermarkup a4^\fingerBC
-    \centermarkup aes4^\fingerO
-    \centermarkup g4^\fingerB
-    \centermarkup fis4^\fingerA
-    \centermarkup f4^\fingerO
-    \centermarkup e4^\fingerB
-    \centermarkup ees4^\fingerA
-    \centermarkup d4^\fingerAB
-    \centermarkup des4^\fingerO
-    \centermarkup c4^\fingerB
-    s4_\markup \bold \lower #1 "…"
+    \centermarkup e4*2^\fingerTO
+    \centermarkup ees4*2^\fingerTB
+    \centermarkup d4*2^\fingerTA
+    \centermarkup des4*2^\fingerTAB
+    \centermarkup c4*2^\fingerTBC
+    \bar "|"
   }
 }
 \markup \null
@@ -333,7 +346,8 @@ staccatoExercise = \relative c'' {
         \musicglyph "scripts.stopped"
       }
       ) tones.
-      Gradually transition from open to stopped and back.
+      Gradually transition from open to stopped and back,
+      using more pressure on the stopped tone.
     }
   }
   \new Staff
@@ -343,80 +357,70 @@ staccatoExercise = \relative c'' {
     \tempo 4 = 120 - 176
     \centermarkup f2\p^\fingerTO(
     \centermarkup e2^\fingerTB |
-    \centermarkup f2^\fingerTO) r |
-    \centermarkup f2\glissando\<^\fingerTO(
+    \centermarkup f2\glissando\<^\fingerTO
     \centermarkup e2^\fullstopped\glissando\ff\> |
     \centermarkup f2^\fullopen)\! r |
     \bar "||"
     \centermarkup e2^\fingerTB(
     \centermarkup dis2^\fingerTA |
-    \centermarkup e2^\fingerTB) r |
-    \centermarkup e2\glissando\<^\fingerTB(
+    \centermarkup e2\glissando\<^\fingerTB
     \centermarkup dis2^\fullstopped\glissando\> |
     \centermarkup e2^\fullopen)\! r |
     \bar "||"
+    \break
     \centermarkup ees2^\fingerTA(
     \centermarkup d2^\fingerTAB |
-    \centermarkup ees2^\fingerTA) r |
-    \centermarkup ees2\glissando\<^\fingerTA(
+    \centermarkup ees2\glissando\<^\fingerTA
     \centermarkup d2^\fullstopped\glissando\> |
     \centermarkup ees2^\fullopen)\! r |
     \bar "||"
     \centermarkup d2^\fingerTAB(
     \centermarkup cis2^\fingerTBC |
-    \centermarkup d2^\fingerTAB) r |
-    \centermarkup d2\glissando\<^\fingerTAB(
+    \centermarkup d2\glissando\<^\fingerTAB
     \centermarkup cis2^\fullstopped\glissando\> |
     \centermarkup d2^\fullopen)\! r |
     \bar "||"
     \centermarkup des2^\fingerTBC(
     \centermarkup c2^\fingerTO |
-    \centermarkup des2^\fingerTBC) r |
-    \centermarkup des2\glissando\<^\fingerTBC(
+    \centermarkup des2\glissando\<^\fingerTBC
     \centermarkup c2^\fullstopped\glissando\> |
     \centermarkup des2^\fullopen)\! r |
     \bar "||"
     \centermarkup c2^\fingerA(
     \centermarkup b2^\fingerB |
-    \centermarkup c2^\fingerA) r |
-    \centermarkup c2\glissando\<^\fingerA(
+    \centermarkup c2\glissando\<^\fingerA
     \centermarkup b2^\fullstopped\glissando\> |
     \centermarkup c2^\fullopen)\! r |
     \bar "||"
     \centermarkup b2^\fingerAB(
     \centermarkup ais2^\fingerA |
-    \centermarkup b2^\fingerAB) r |
-    \centermarkup b2\glissando\<^\fingerAB(
+    \centermarkup b2\glissando\<^\fingerAB
     \centermarkup ais2^\fullstopped\glissando\> |
     \centermarkup b2^\fullopen)\! r |
     \bar "||"
     \centermarkup bes2^\fingerBC(
     \centermarkup a2^\fingerAB |
-    \centermarkup bes2^\fingerBC) r |
-    \centermarkup bes2\glissando\<^\fingerBC(
+    \centermarkup bes2\glissando\<^\fingerBC
     \centermarkup a2^\fullstopped\glissando\> |
     \centermarkup bes2^\fullopen)\! r |
     \bar "||"
-    \centermarkup beseh2^\fingerO(
+    \overrideThreeHalfFlat \centermarkup beseh2^\fingerO(
     \centermarkup aes2^\fingerBC |
-    \centermarkup beseh2^\fingerO) r |
-    \centermarkup beseh2\glissando\<^\fingerO(
+    \overrideThreeHalfFlat \centermarkup beseh2\glissando\<^\fingerO
     \centermarkup aes2^\fullstopped\glissando\> |
-    \centermarkup beseh2^\fullopen)\! r |
+    \overrideThreeHalfFlat \centermarkup beseh2^\fullopen)\! r |
     \bar "||"
-    \centermarkup aeh2^\fingerB(
+    \overrideHalfFlat \centermarkup aeh2^\fingerB^(
     \centermarkup g2^\fingerO |
-    \centermarkup aeh2^\fingerB) r |
-    \centermarkup aeh2\glissando\<^\fingerB(
+    \overrideHalfFlat \centermarkup aeh2\glissando\<^\fingerB
     \centermarkup g2^\fullstopped\glissando\> |
-    \centermarkup aeh2^\fullopen)\! r |
+    \overrideHalfFlat \centermarkup aeh2^\fullopen)\! r |
     \bar "||"
-    \centermarkup aeseh2^\fingerA(
+    \overrideThreeHalfFlat \centermarkup aeseh2^\fingerA^(
     \centermarkup ges2^\fingerB |
-    \centermarkup aeseh2^\fingerA) r |
-    \centermarkup aeseh2\glissando\<^\fingerA(
+    \overrideThreeHalfFlat \centermarkup aeseh2\glissando\<^\fingerA
     \centermarkup ges2^\fullstopped\glissando\> |
-    \centermarkup aeseh2^\fullopen)\! r |
+    \overrideThreeHalfFlat \centermarkup aeseh2^\fullopen)\! r |
     \bar "|."
   }
 }
@@ -443,6 +447,8 @@ staccatoExercise = \relative c'' {
         \musicglyph "scripts.stopped"
       }
       ) tones.
+      Gradually transition from open to echo to stopped and back,
+      using more pressure on the stopped tone.
     }
   }
   \new Staff
@@ -452,80 +458,59 @@ staccatoExercise = \relative c'' {
     \tempo 4 = 120 - 176
     \centermarkup g2\p^\fingerO(
     \centermarkup fis2^\fingerB |
-    \noBreak
     \centermarkup f2^\fingerA
     \centermarkup fis2^\fingerB |
-    \noBreak
-    \centermarkup g2^\fingerO) r |
-    \centermarkup g2\glissando^\fingerO(
+    \centermarkup g2\glissando^\fingerO
     \centermarkup fis2^\mostlystopped\glissando\< |
     \centermarkup f2^\fullstopped\glissando\ff\>
     \centermarkup fis2^\mostlystopped\glissando\! |
-    \noBreak
     \centermarkup g2^\fullopen) r |
     \bar "||"
     \centermarkup ges2^\fingerB(
     \centermarkup f2^\fingerA |
-    \noBreak
     \centermarkup e2^\fingerO
     \centermarkup f2^\fingerA |
-    \noBreak
-    \centermarkup ges2^\fingerB) r |
-    \centermarkup ges2\glissando^\fingerB(
+    \centermarkup ges2\glissando^\fingerB
     \centermarkup f2^\mostlystopped\glissando\< |
     \centermarkup e2^\fullstopped\glissando\>
     \centermarkup f2^\mostlystopped\glissando\! |
-    \noBreak
     \centermarkup ges2^\fullopen) r |
     \bar "||"
     \centermarkup f2^\fingerA(
     \centermarkup e2^\fingerO |
-    \noBreak
     \centermarkup dis2^\fingerB
     \centermarkup e2^\fingerO |
-    \noBreak
-    \centermarkup f2^\fingerA) r |
-    \centermarkup f2\glissando^\fingerA(
+    \centermarkup f2\glissando^\fingerA
     \centermarkup e2^\mostlystopped\glissando\< |
     \centermarkup dis2^\fullstopped\glissando\>
     \centermarkup e2^\mostlystopped\glissando\! |
-    \noBreak
     \centermarkup f2^\fullopen) r |
     \bar "||"
     \centermarkup e2^\fingerAB(
     \centermarkup dis2^\fingerB |
-    \noBreak
     \centermarkup d2^\fingerA
     \centermarkup dis2^\fingerB |
-    \noBreak
-    \centermarkup e2^\fingerAB) r |
-    \centermarkup e2\glissando^\fingerAB(
+    \centermarkup e2\glissando^\fingerAB
     \centermarkup dis2^\mostlystopped\glissando\< |
     \centermarkup d2^\fullstopped\glissando\>
     \centermarkup dis2^\mostlystopped\glissando\! |
-    \noBreak
     \centermarkup e2^\fullopen) r |
     \bar "||"
     \centermarkup e2^\fingerO(
     \centermarkup dis2^\fingerB |
-    \noBreak
     \centermarkup cis2^\fingerAB
     \centermarkup dis2^\fingerB |
-    \noBreak
-    \centermarkup e2^\fingerO) r |
-    \centermarkup e2\glissando^\fingerO(
+    \centermarkup e2\glissando^\fingerO
     \centermarkup dis2^\mostlystopped\glissando\< |
     \centermarkup cis2^\fullstopped\glissando\>
     \centermarkup dis2^\mostlystopped\glissando\! |
-    \noBreak
     \centermarkup e2^\fullopen) r |
     \bar "||"
     \centermarkup ees2^\fingerB(
     \centermarkup d2^\fingerA |
     \centermarkup c2^\fingerO
     \centermarkup d2^\fingerA |
-    \centermarkup ees2^\fingerB) r |
-    \centermarkup ees2\glissando^\fingerB(
+    \centermarkup ees2\glissando^\fingerB
     \centermarkup d2^\mostlystopped\glissando\< |
     \centermarkup c2^\fullstopped\glissando\>
     \centermarkup d2^\mostlystopped\glissando\! |
@@ -537,7 +522,21 @@ staccatoExercise = \relative c'' {
 \score {
   \header {
     piece = \markup \concat { \box { C } " Open and Stopped Staccato" }
-    subpiece = "Match intonation and dynamics between open and stopped tones."
+    subpiece = \markup \wordwrap {
+      Match intonation between open (
+      \fontsize #1 \center-column {
+        \musicglyph "noteheads.s1"
+        \vspace #-1.4
+        \musicglyph "scripts.open"
+      }
+      ) and stopped (
+      \fontsize #1 \center-column {
+        \musicglyph "noteheads.s1"
+        \vspace #-1.4
+        \musicglyph "scripts.stopped"
+      }
+      ) tones.
+    }
   }
   \new Staff
   \relative c'' {
