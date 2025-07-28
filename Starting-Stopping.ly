@@ -199,8 +199,8 @@ overrideThreeHalfFlat = {
     \set fingeringOrientations = #'(left)
     \override Fingering.whiteout = ##t
 
-    \once \override Glissando.bound-details.left.Y = #2
-    \once \override Glissando.bound-details.right.Y = #1
+    \once \override Glissando.bound-details.left.Y = #1.75
+    \once \override Glissando.bound-details.right.Y = #1.25
     e2*2^\open\glissando_\markup
     \italic \small \concat { 10 \super th " partial" }
     ees4*4^\stopped
@@ -211,8 +211,8 @@ overrideThreeHalfFlat = {
     \italic \small \concat { 9 \super th " partial" }
     des4*4^\stopped
     \bar "|"
-    \once \override Glissando.bound-details.left.Y = #1
-    \once \override Glissando.bound-details.right.Y = #0
+    \once \override Glissando.bound-details.left.Y = #0.75
+    \once \override Glissando.bound-details.right.Y = #0.25
     c2*2^\open\glissando_\markup
     \italic \small \concat { 8 \super th " partial" }
     \overrideThreeHalfFlat ceseh4*4^\stopped
@@ -459,7 +459,11 @@ overrideThreeHalfFlat = {
     \centermarkup f2^\fingerA
     \centermarkup fis2^\fingerB |
     \centermarkup g2\glissando^\fingerO
+    \once \override Glissando.bound-details.left.Y = #-1.25
+    \once \override Glissando.bound-details.right.Y = #-1.75
     \centermarkup fis2^\mostlystopped\glissando\< |
+    \once \override Glissando.bound-details.left.Y = #-1.75
+    \once \override Glissando.bound-details.right.Y = #-1.25
     \centermarkup f2^\fullstopped\glissando\ff\>
     \centermarkup fis2^\mostlystopped\glissando\! |
     \centermarkup g2^\fullopen) r |
@@ -489,7 +493,11 @@ overrideThreeHalfFlat = {
     \centermarkup d2^\fingerA
     \centermarkup dis2^\fingerB |
     \centermarkup e2\glissando^\fingerAB
+    \once \override Glissando.bound-details.left.Y = #-2.25
+    \once \override Glissando.bound-details.right.Y = #-2.75
     \centermarkup dis2^\mostlystopped\glissando\< |
+    \once \override Glissando.bound-details.left.Y = #-2.75
+    \once \override Glissando.bound-details.right.Y = #-2.25
     \centermarkup d2^\fullstopped\glissando\>
     \centermarkup dis2^\mostlystopped\glissando\! |
     \centermarkup e2^\fullopen) r |
