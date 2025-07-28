@@ -91,10 +91,16 @@ fingerTABC = \markup
   \general-align #X #CENTER \fingerT
 }
 
+fullopen = \markup {
+  \abs-fontsize #12 \musicglyph "scripts.open"
+}
 mostlystopped = \markup {
   \combine
   \abs-fontsize #12 \musicglyph "scripts.halfopenvertical"
   \abs-fontsize #12 \musicglyph "scripts.tenuto"
+}
+fullstopped = \markup {
+  \abs-fontsize #12 \musicglyph "scripts.stopped"
 }
 
 staccatoExercise = \relative c'' {
@@ -326,37 +332,25 @@ staccatoExercise = \relative c'' {
     s4_\markup \bold \lower #1 "…"
   }
 }
-\markup \null
+\pageBreak
 \score {
   \header {
-    piece = \markup \concat { \box { A } " Stopped Pitch Bends" }
+    piece = \markup \concat { \box { A } " Short Pitch Bends" }
     subpiece = \markup \wordwrap {
-      Gradually transition from open (
+      Use the suggested fingerings to match intonation between open (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
-        \vspace #-1.5
+        \vspace #-1.4
         \musicglyph "scripts.open"
       }
-      ) to stopped (
+      ) and stopped (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
-        \vspace #-1.5
+        \vspace #-1.4
         \musicglyph "scripts.stopped"
       }
-      ) tones and back.
-      In lower partials, add an echo tone (
-      \fontsize #1 \center-column {
-        \musicglyph "noteheads.s1"
-        \vspace #-1.5
-        \mostlystopped
-      }
-      ) in between.
-    }
-  }
-  \layout {
-    \context {
-      \Score
-      \omit BarNumber
+      ) tones.
+      Gradually transition from open to stopped and back.
     }
   }
   \new Staff
@@ -364,88 +358,209 @@ staccatoExercise = \relative c'' {
     \accidentalStyle Score.modern
     \time 4/4
     \tempo 4 = 120 - 176
-    \centermarkup f2\glissando\p\<^\fingerTO
-    e2^\stopped\glissando\ff\> |
-    f2^\open\p\! r
-    \centermarkup e2\glissando\<^\fingerTB
-    dis2^\stopped\glissando\> |
-    e2^\open\! r |
-    \centermarkup ees2\glissando\<^\fingerTA
-    d2^\stopped\glissando\> |
-    ees2^\open\! r |
-    \centermarkup d2\glissando\<^\fingerTAB
-    cis2^\stopped\glissando\> |
-    d2^\open\! r |
-    \centermarkup des2\glissando\<^\fingerTBC
-    c2^\stopped\glissando\> |
-    des2^\open\! r |
+    \centermarkup f2\p^\fingerTO(
+    \centermarkup e2^\fingerTB |
+    \centermarkup f2^\fingerTO) r |
+    \centermarkup f2\glissando\<^\fingerTO(
+    \centermarkup e2^\fullstopped\glissando\ff\> |
+    \centermarkup f2^\fullopen)\! r |
     \bar "||"
-    \centermarkup c2\glissando\<^\fingerA
-    b2^\stopped\glissando\> |
-    c2^\open\! r |
-    \centermarkup b2\glissando\<^\fingerAB
-    ais2^\stopped\glissando\> |
-    b2^\open\! r |
-    \centermarkup bes2\glissando\<^\fingerBC
-    a2^\stopped\glissando\> |
-    bes2^\open\! r |
-    \bar "||"
-    \centermarkup bes2\glissando\<^\fingerO
-    aes2^\stopped\glissando\> |
-    bes2^\open\! r |
-    \centermarkup a2\glissando\<^\fingerB
-    g2^\stopped\glissando\> |
-    a2^\open\! r |
-    \centermarkup aes2\glissando\<^\fingerA
-    ges2^\stopped\glissando\> |
-    aes2^\open\! r |
-    \bar "||"
+    \centermarkup e2^\fingerTB(
+    \centermarkup dis2^\fingerTA |
+    \centermarkup e2^\fingerTB) r |
+    \centermarkup e2\glissando\<^\fingerTB(
+    \centermarkup dis2^\fullstopped\glissando\> |
+    \centermarkup e2^\fullopen)\! r |
     \break
-    \centermarkup g2\glissando^\fingerO
-    \centermarkup fis2^\mostlystopped\glissando\< |
-    f2^\stopped\glissando\>
-    \centermarkup fis2^\mostlystopped\glissando\! |
-    g2^\open r |
-    \centermarkup ges2\glissando^\fingerB
-    \centermarkup f2^\mostlystopped\glissando\< |
-    e2^\stopped\glissando\>
-    \centermarkup f2^\mostlystopped\glissando\! |
-    ges2^\open r |
-    \centermarkup f2\glissando^\fingerA
-    \centermarkup e2^\mostlystopped\glissando\< |
-    dis2^\stopped\glissando\>
-    \centermarkup e2^\mostlystopped\glissando\! |
-    f2^\open r |
-    \centermarkup e2\glissando^\fingerAB
-    \centermarkup dis2^\mostlystopped\glissando\< |
-    d2^\stopped\glissando\>
-    \centermarkup dis2^\mostlystopped\glissando\! |
-    e2^\open r |
     \bar "||"
-    \centermarkup e2\glissando^\fingerO
+    \centermarkup ees2^\fingerTA(
+    \centermarkup d2^\fingerTAB |
+    \centermarkup ees2^\fingerTA) r |
+    \centermarkup ees2\glissando\<^\fingerTA(
+    \centermarkup d2^\fullstopped\glissando\> |
+    \centermarkup ees2^\fullopen)\! r |
+    \bar "||"
+    \centermarkup d2^\fingerTAB(
+    \centermarkup cis2^\fingerTBC |
+    \centermarkup d2^\fingerTAB) r |
+    \centermarkup d2\glissando\<^\fingerTAB(
+    \centermarkup cis2^\fullstopped\glissando\> |
+    \centermarkup d2^\fullopen)\! r |
+    \bar "||"
+    \centermarkup des2^\fingerTBC(
+    \centermarkup c2^\fingerTO |
+    \centermarkup des2^\fingerTBC) r |
+    \break
+    \centermarkup des2\glissando\<^\fingerTBC(
+    \centermarkup c2^\fullstopped\glissando\> |
+    \centermarkup des2^\fullopen)\! r |
+    \bar "||"
+    \centermarkup c2^\fingerA(
+    \centermarkup b2^\fingerB |
+    \centermarkup c2^\fingerA) r |
+    \centermarkup c2\glissando\<^\fingerA(
+    \centermarkup b2^\fullstopped\glissando\> |
+    \centermarkup c2^\fullopen)\! r |
+    \bar "||"
+    \centermarkup b2^\fingerAB(
+    \centermarkup ais2^\fingerA |
+    \centermarkup b2^\fingerAB) r |
+    \centermarkup b2\glissando\<^\fingerAB(
+    \centermarkup ais2^\fullstopped\glissando\> |
+    \centermarkup b2^\fullopen)\! r |
+    \break
+    \bar "||"
+    \centermarkup bes2^\fingerBC(
+    \centermarkup a2^\fingerAB |
+    \centermarkup bes2^\fingerBC) r |
+    \centermarkup bes2\glissando\<^\fingerBC(
+    \centermarkup a2^\fullstopped\glissando\> |
+    \centermarkup bes2^\fullopen)\! r |
+    \bar "||"
+    \centermarkup beseh2^\fingerO(
+    \centermarkup aes2^\fingerBC |
+    \centermarkup beseh2^\fingerO) r |
+    \centermarkup beseh2\glissando\<^\fingerO(
+    \centermarkup aes2^\fullstopped\glissando\> |
+    \centermarkup beseh2^\fullopen)\! r |
+    \break
+    \bar "||"
+    \centermarkup aeh2^\fingerB(
+    \centermarkup g2^\fingerO |
+    \centermarkup aeh2^\fingerB) r |
+    \centermarkup aeh2\glissando\<^\fingerB(
+    \centermarkup g2^\fullstopped\glissando\> |
+    \centermarkup aeh2^\fullopen)\! r |
+    \bar "||"
+    \centermarkup aeseh2^\fingerA(
+    \centermarkup ges2^\fingerB |
+    \centermarkup aeseh2^\fingerA) r |
+    \centermarkup aeseh2\glissando\<^\fingerA(
+    \centermarkup ges2^\fullstopped\glissando\> |
+    \centermarkup aeseh2^\fullopen)\! r |
+    \bar "|."
+  }
+}
+\score {
+  \header {
+    piece = \markup \concat { \box { B } " Long Pitch Bends" }
+    subpiece = \markup \wordwrap {
+      Use the suggested fingerings to match intonation between open (
+      \fontsize #1 \center-column {
+        \musicglyph "noteheads.s1"
+        \vspace #-1.4
+        \musicglyph "scripts.open"
+      }
+      ), mostly stopped (
+      \fontsize #1 \center-column {
+        \musicglyph "noteheads.s1"
+        \vspace #-1.4
+        \mostlystopped
+      }
+      ) and fully stopped (
+      \fontsize #1 \center-column {
+        \musicglyph "noteheads.s1"
+        \vspace #-1.4
+        \musicglyph "scripts.stopped"
+      }
+      ) tones.
+      When mostly stopped, the horn produces an \italic { echo tone, }
+      a half step below the open tone.
+    }
+  }
+  \new Staff
+  \relative c'' {
+    \accidentalStyle Score.modern
+    \time 4/4
+    \tempo 4 = 120 - 176
+    \centermarkup g2\p^\fingerO(
+    \centermarkup fis2^\fingerB |
+    \noBreak
+    \centermarkup f2^\fingerA
+    \centermarkup fis2^\fingerB |
+    \noBreak
+    \centermarkup g2^\fingerO) r |
+    \centermarkup g2\glissando^\fingerO(
+    \centermarkup fis2^\mostlystopped\glissando\< |
+    \centermarkup f2^\fullstopped\glissando\ff\>
+    \centermarkup fis2^\mostlystopped\glissando\! |
+    \noBreak
+    \centermarkup g2^\fullopen) r |
+    \bar "||"
+    \centermarkup ges2^\fingerB(
+    \centermarkup f2^\fingerA |
+    \noBreak
+    \centermarkup e2^\fingerO
+    \centermarkup f2^\fingerA |
+    \noBreak
+    \centermarkup ges2^\fingerB) r |
+    \centermarkup ges2\glissando^\fingerB(
+    \centermarkup f2^\mostlystopped\glissando\< |
+    \centermarkup e2^\fullstopped\glissando\>
+    \centermarkup f2^\mostlystopped\glissando\! |
+    \noBreak
+    \centermarkup ges2^\fullopen) r |
+    \bar "||"
+    \centermarkup f2^\fingerA(
+    \centermarkup e2^\fingerO |
+    \noBreak
+    \centermarkup dis2^\fingerB
+    \centermarkup e2^\fingerO |
+    \noBreak
+    \centermarkup f2^\fingerA) r |
+    \centermarkup f2\glissando^\fingerA(
+    \centermarkup e2^\mostlystopped\glissando\< |
+    \centermarkup dis2^\fullstopped\glissando\>
+    \centermarkup e2^\mostlystopped\glissando\! |
+    \noBreak
+    \centermarkup f2^\fullopen) r |
+    \bar "||"
+    \centermarkup e2^\fingerAB(
+    \centermarkup dis2^\fingerB |
+    \noBreak
+    \centermarkup d2^\fingerA
+    \centermarkup dis2^\fingerB |
+    \noBreak
+    \centermarkup e2^\fingerAB) r |
+    \centermarkup e2\glissando^\fingerAB(
     \centermarkup dis2^\mostlystopped\glissando\< |
-    cis2^\stopped\glissando\>
+    \centermarkup d2^\fullstopped\glissando\>
     \centermarkup dis2^\mostlystopped\glissando\! |
-    e2^\open r |
-    \centermarkup ees2\glissando^\fingerB
+    \noBreak
+    \centermarkup e2^\fullopen) r |
+    \bar "||"
+    \centermarkup e2^\fingerO(
+    \centermarkup dis2^\fingerB |
+    \noBreak
+    \centermarkup cis2^\fingerAB
+    \centermarkup dis2^\fingerB |
+    \noBreak
+    \centermarkup e2^\fingerO) r |
+    \centermarkup e2\glissando^\fingerO(
+    \centermarkup dis2^\mostlystopped\glissando\< |
+    \centermarkup cis2^\fullstopped\glissando\>
+    \centermarkup dis2^\mostlystopped\glissando\! |
+    \noBreak
+    \centermarkup e2^\fullopen) r |
+    \bar "||"
+    \centermarkup ees2^\fingerB(
+    \centermarkup d2^\fingerA |
+    \centermarkup c2^\fingerO
+    \centermarkup d2^\fingerA |
+    \centermarkup ees2^\fingerB) r |
+    \centermarkup ees2\glissando^\fingerB(
     \centermarkup d2^\mostlystopped\glissando\< |
-    c2^\stopped\glissando\>
+    \centermarkup c2^\fullstopped\glissando\>
     \centermarkup d2^\mostlystopped\glissando\! |
-    ees2^\open r |
+    \centermarkup ees2^\fullopen) r |
     \bar "|."
   }
 }
 \pageBreak
 \score {
   \header {
-    piece = \markup \concat { \box { B } " Stopped Staccato" }
+    piece = \markup \concat { \box { C } " Open and Stopped Staccato" }
     subpiece = "Match intonation and dynamics between open and stopped tones."
-  }
-  \layout {
-    \context {
-      \Score
-      \omit BarNumber
-    }
   }
   \new Staff
   \relative c'' {
