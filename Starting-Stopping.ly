@@ -167,13 +167,13 @@ staccatoExercise = \relative c'' {
     \accidentalStyle Score.forget
     \set Score.timing = ##f
     \omit Staff.TimeSignature
-    s1024_\markup \small \italic "open"
+    \textMark \markup \small \italic "open"
     \centermarkup e4(^\fullopen d c beseh g e c2)
     \bar "|"
-    s1024_\markup \small \italic "echo (mostly stopped)"
+    \textMark \markup \small \italic "echo (mostly stopped)"
     \centermarkup dis'4(^\mostlystopped cis b aeh fis dis b2)
     \bar "|"
-    s1024_\markup \small \italic "fully stopped"
+    \textMark \markup \small \italic "fully stopped"
     \centermarkup f''4(^\fullstopped ees des ceseh aes f des2)
     \bar "|"
   }
@@ -216,42 +216,50 @@ staccatoExercise = \relative c'' {
     \set fingeringOrientations = #'(left)
     \override Fingering.whiteout = ##t
 
+    \tweak direction #DOWN
+    \textMark \markup \small \italic \concat { 10 \super th " partial" }
     \once \override Glissando.bound-details.left.Y = #1.75
     \once \override Glissando.bound-details.right.Y = #1.25
-    e2*2^\open\glissando_\markup
-    \italic \small \concat { 10 \super th " partial" }
+    e2*2^\open\glissando
     ees4*4^\stopped\startGroup
     \bar "|"
+    \tweak direction #DOWN
+    \textMark \markup \small \italic \concat { 9 \super th " partial" }
     \once \override Glissando.bound-details.left.Y = #1.5
     \once \override Glissando.bound-details.right.Y = #0.5
-    d2*2^\open\glissando\stopGroup_\markup
-    \italic \small \concat { 9 \super th " partial" }
+    d2*2^\open\glissando\stopGroup
     des4*4^\stopped\startGroup
     \bar "|"
+    \tweak direction #DOWN
+    \textMark \markup \small \italic \concat { 8 \super th " partial" }
     \once \override Glissando.bound-details.left.Y = #0.75
     \once \override Glissando.bound-details.right.Y = #0.25
-    c2*2^\open\glissando\stopGroup_\markup
-    \italic \small \concat { 8 \super th " partial" }
+    c2*2^\open\glissando\stopGroup
     ceseh4*4^\stopped\startGroup
     \bar "|"
-    beseh2*2^\open\glissando\stopGroup_\markup
-    \italic \small \concat { 7 \super th " partial" }
+    \tweak direction #DOWN
+    \textMark \markup \small \italic \concat { 7 \super th " partial" }
+    beseh2*2^\open\glissando\stopGroup
     aes4*4^\stopped\startGroup
     \bar "|"
-    g2*2^\open\glissando\stopGroup_\markup
-    \italic \small \concat { 6 \super th " partial" }
+    \tweak direction #DOWN
+    \textMark \markup \small \italic \concat { 6 \super th " partial" }
+    g2*2^\open\glissando\stopGroup
     f4*4^\stopped\startGroup
     \bar "|"
-    e2*2^\open\glissando\stopGroup_\markup
-    \italic \small \concat { 5 \super th " partial" }
+    \tweak direction #DOWN
+    \textMark \markup \small \italic \concat { 5 \super th " partial" }
+    e2*2^\open\glissando\stopGroup
     des4*4^\stopped\startGroup
     \bar "|"
-    c2*2^\open\glissando\stopGroup_\markup
-    \italic \small \concat { 4 \super th " partial" }
+    \tweak direction #DOWN
+    \textMark \markup \small \italic \concat { 4 \super th " partial" }
+    c2*2^\open\glissando\stopGroup
     aes4*4^\stopped\startGroup
     \bar "|"
-    g2*2^\open\stopGroup_\markup
-    \italic \small \concat { 3 \super rd " partial" }
+    \tweak direction #DOWN
+    \textMark \markup \small \italic \concat { 3 \super rd " partial" }
+    g2*2^\open\stopGroup
     s4_\markup \bold \lower #1 "…"
   }
 }
@@ -273,7 +281,8 @@ staccatoExercise = \relative c'' {
     \override Stem.length = 0
 
     \clef treble
-    s1024_\markup \small \italic "F horn: use any fingering one half step down"
+    \tweak direction #DOWN
+    \textMark \markup \small \italic "F horn: use any fingering one half step down"
     \centermarkup f4*2^\fingerO
     \centermarkup e4*2^\fingerB
     \centermarkup ees4*2^\fingerO
@@ -319,7 +328,8 @@ staccatoExercise = \relative c'' {
     \override Stem.length = 0
 
     \clef treble
-    s1024_\markup \small \italic \override #'(baseline-skip . 2.5) \column {
+    \tweak direction #DOWN
+    \textMark \markup \small \italic \override #'(baseline-skip . 2.5) \column {
       \line { \concat { "B" \super \flat " horn, 11" \super th " partial:" } }
       \line { \concat { "use 12" \super th " partial fingerings" } }
       \line { "for the same pitch" }
@@ -332,7 +342,8 @@ staccatoExercise = \relative c'' {
     \centermarkup g4*2^\fingerTAC
     \centermarkup fis4*2^\fingerTABC
     \bar "|"
-    s1024_\markup \small \italic \override #'(baseline-skip . 2.5) \column {
+    \tweak direction #DOWN
+    \textMark \markup \small \italic \override #'(baseline-skip . 2.5) \column {
       \line { \concat { "B" \super \flat " horn, 7" \super th " partial:" } }
       \line { \concat { "use 8" \super th " partial fingerings" } }
       \line { "one half step up" }
