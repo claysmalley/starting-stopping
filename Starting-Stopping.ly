@@ -1,4 +1,4 @@
-\version "2.22.1"
+\version "2.24.1"
 
 #(set-default-paper-size "letter")
 
@@ -120,15 +120,6 @@ staccatoExercise = \relative c'' {
   r2 |
 }
 
-overrideHalfFlat = {
-  \once \override Accidental.stencil = #ly:text-interface::print
-  \once \override Accidental.text = \markup \musicglyph "accidentals.natural.arrowdown"
-}
-overrideThreeHalfFlat = {
-  \once \override Accidental.stencil = #ly:text-interface::print
-  \once \override Accidental.text = \markup \musicglyph "accidentals.flat.arrowdown"
-}
-
 \markup \wordwrap {
   One of the most noticeable differences between the horn and other brass instruments is the movement of the right hand in the bell.
   Historically, this was done on valveless, or \italic natural, horns,
@@ -160,19 +151,30 @@ overrideThreeHalfFlat = {
 }
 \markup \null
 \score {
+  \layout {
+    \context {
+      \Staff
+      alterationGlyphs =
+        #'((1/2 . "accidentals.sharp")
+           (0 . "accidentals.natural")
+           (-1/4 . "accidentals.natural.arrowdown")
+           (-1/2 . "accidentals.flat")
+           (-3/4 . "accidentals.flat.arrowdown"))
+    }
+  }
   \new Staff
   \relative c'' {
     \accidentalStyle Score.forget
     \set Score.timing = ##f
     \omit Staff.TimeSignature
     s1024_\markup \small \italic "open"
-    \centermarkup e4(^\fullopen d c \overrideThreeHalfFlat beseh g e c2)
+    \centermarkup e4(^\fullopen d c beseh g e c2)
     \bar "|"
     s1024_\markup \small \italic "echo (mostly stopped)"
-    \centermarkup dis'4(^\mostlystopped cis b \overrideHalfFlat aeh fis dis b2)
+    \centermarkup dis'4(^\mostlystopped cis b aeh fis dis b2)
     \bar "|"
     s1024_\markup \small \italic "fully stopped"
-    \centermarkup f''4(^\fullstopped ees des \overrideThreeHalfFlat ceseh aes f des2)
+    \centermarkup f''4(^\fullstopped ees des ceseh aes f des2)
     \bar "|"
   }
 }
@@ -191,6 +193,21 @@ overrideThreeHalfFlat = {
 }
 \markup \null
 \score {
+  \layout {
+    \context {
+      \Staff
+      \consists Horizontal_bracket_engraver
+      \override HorizontalBracket.direction = #UP
+      \override HorizontalBracket.Y-offset = #5
+      \override HorizontalBracketText.text = \markup \italic "half step"
+      alterationGlyphs =
+        #'((1/2 . "accidentals.sharp")
+           (0 . "accidentals.natural")
+           (-1/4 . "accidentals.natural.arrowdown")
+           (-1/2 . "accidentals.flat")
+           (-3/4 . "accidentals.flat.arrowdown"))
+    }
+  }
   \new Staff
   \relative c'' {
     \set Score.timing = ##f
@@ -203,37 +220,37 @@ overrideThreeHalfFlat = {
     \once \override Glissando.bound-details.right.Y = #1.25
     e2*2^\open\glissando_\markup
     \italic \small \concat { 10 \super th " partial" }
-    ees4*4^\stopped
+    ees4*4^\stopped\startGroup
     \bar "|"
     \once \override Glissando.bound-details.left.Y = #1.5
     \once \override Glissando.bound-details.right.Y = #0.5
-    d2*2^\open\glissando_\markup
+    d2*2^\open\glissando\stopGroup_\markup
     \italic \small \concat { 9 \super th " partial" }
-    des4*4^\stopped
+    des4*4^\stopped\startGroup
     \bar "|"
     \once \override Glissando.bound-details.left.Y = #0.75
     \once \override Glissando.bound-details.right.Y = #0.25
-    c2*2^\open\glissando_\markup
+    c2*2^\open\glissando\stopGroup_\markup
     \italic \small \concat { 8 \super th " partial" }
-    \overrideThreeHalfFlat ceseh4*4^\stopped
+    ceseh4*4^\stopped\startGroup
     \bar "|"
-    \overrideThreeHalfFlat beseh2*2^\open\glissando_\markup
+    beseh2*2^\open\glissando\stopGroup_\markup
     \italic \small \concat { 7 \super th " partial" }
-    aes4*4^\stopped
+    aes4*4^\stopped\startGroup
     \bar "|"
-    g2*2^\open\glissando_\markup
+    g2*2^\open\glissando\stopGroup_\markup
     \italic \small \concat { 6 \super th " partial" }
-    f4*4^\stopped
+    f4*4^\stopped\startGroup
     \bar "|"
-    e2*2^\open\glissando_\markup
+    e2*2^\open\glissando\stopGroup_\markup
     \italic \small \concat { 5 \super th " partial" }
-    des4*4^\stopped
+    des4*4^\stopped\startGroup
     \bar "|"
-    c2*2^\open\glissando_\markup
+    c2*2^\open\glissando\stopGroup_\markup
     \italic \small \concat { 4 \super th " partial" }
-    aes4*4^\stopped
+    aes4*4^\stopped\startGroup
     \bar "|"
-    g2*2^\open_\markup
+    g2*2^\open\stopGroup_\markup
     \italic \small \concat { 3 \super rd " partial" }
     s4_\markup \bold \lower #1 "…"
   }
@@ -331,6 +348,17 @@ overrideThreeHalfFlat = {
 \markup \null
 \pageBreak
 \score {
+  \layout {
+    \context {
+      \Staff
+      alterationGlyphs =
+        #'((1/2 . "accidentals.sharp")
+           (0 . "accidentals.natural")
+           (-1/4 . "accidentals.natural.arrowdown")
+           (-1/2 . "accidentals.flat")
+           (-3/4 . "accidentals.flat.arrowdown"))
+    }
+  }
   \header {
     piece = \markup \concat { \box { A } " Short Pitch Bends" }
     subpiece = \markup \wordwrap {
@@ -410,23 +438,23 @@ overrideThreeHalfFlat = {
     \centermarkup a2^\fullstopped\glissando\> |
     \centermarkup bes2^\fullopen)\! r |
     \bar "||"
-    \overrideThreeHalfFlat \centermarkup beseh2^\fingerO(
+    \centermarkup beseh2^\fingerO(
     \centermarkup aes2^\fingerBC |
-    \overrideThreeHalfFlat \centermarkup beseh2\glissando\<^\fingerO
+    \centermarkup beseh2\glissando\<^\fingerO
     \centermarkup aes2^\fullstopped\glissando\> |
-    \overrideThreeHalfFlat \centermarkup beseh2^\fullopen)\! r |
+    \centermarkup beseh2^\fullopen)\! r |
     \bar "||"
-    \overrideHalfFlat \centermarkup aeh2^\fingerB^(
+    \centermarkup aeh2^\fingerB^(
     \centermarkup g2^\fingerO |
-    \overrideHalfFlat \centermarkup aeh2\glissando\<^\fingerB
+    \centermarkup aeh2\glissando\<^\fingerB
     \centermarkup g2^\fullstopped\glissando\> |
-    \overrideHalfFlat \centermarkup aeh2^\fullopen)\! r |
+    \centermarkup aeh2^\fullopen)\! r |
     \bar "||"
-    \overrideThreeHalfFlat \centermarkup aeseh2^\fingerA^(
+    \centermarkup aeseh2^\fingerA^(
     \centermarkup ges2^\fingerB |
-    \overrideThreeHalfFlat \centermarkup aeseh2\glissando\<^\fingerA
+    \centermarkup aeseh2\glissando\<^\fingerA
     \centermarkup ges2^\fullstopped\glissando\> |
-    \overrideThreeHalfFlat \centermarkup aeseh2^\fullopen)\! r |
+    \centermarkup aeseh2^\fullopen)\! r |
     \bar "|."
   }
 }
