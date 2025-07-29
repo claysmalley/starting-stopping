@@ -381,8 +381,7 @@ staccatoExercise = \relative c'' {
         \vspace #-1.4
         \musicglyph "scripts.open"
       }
-      ),
-      no matter how unconventional they may be.
+      ).
       Upon returning to the upper pitch,
       gradually transition from open to stopped (
       \fontsize #1 \center-column {
@@ -431,6 +430,7 @@ staccatoExercise = \relative c'' {
     \centermarkup c2^\fullstopped\glissando\> |
     \centermarkup des2^\fullopen)\! r |
     \bar "||"
+    \textMark \markup \small "The following fingerings may be uncommon on open horn, but correspond to conventional stopped fingerings."
     \centermarkup c2^\fingerA(
     \centermarkup b2^\fingerB |
     \centermarkup c2\glissando\<^\fingerA
@@ -449,6 +449,11 @@ staccatoExercise = \relative c'' {
     \centermarkup a2^\fullstopped\glissando\> |
     \centermarkup bes2^\fullopen)\! r |
     \bar "||"
+    \textMark \markup \small \concat {
+      "The out-of-tune 7"
+      \super "th"
+      " partial is used here to reach certain stopped tones."
+    }
     \centermarkup beseh2^\fingerO(
     \centermarkup aes2^\fingerBC |
     \centermarkup beseh2\glissando\<^\fingerO
