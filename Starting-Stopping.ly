@@ -105,19 +105,19 @@ fullstopped = \markup {
 
 staccatoExercise = \relative c'' {
   f2^\open
-  f2^\stopped |
+  2^\stopped |
   \repeat unfold 2 {
-    f4^\open
-    f4^\stopped
+    4^\open
+    4^\stopped
   } |
   \repeat unfold 2 {
-    f8^\open[
-    f8^\open]
-    f8^\stopped[
-    f8^\stopped]
+    8^\open[
+    8^\open]
+    8^\stopped[
+    8^\stopped]
   } |
-  f2^\open
-  r2 |
+  2^\open
+  r |
 }
 
 \markup \wordwrap {
@@ -284,23 +284,23 @@ staccatoExercise = \relative c'' {
     \tweak direction #DOWN
     \textMark \markup \small \italic "F horn: use any fingering one half step down"
     \centermarkup f4*2^\fingerO
-    \centermarkup e4*2^\fingerB
-    \centermarkup ees4*2^\fingerO
-    \centermarkup d4*2^\fingerB
-    \centermarkup des4*2^\fingerO
-    \centermarkup c4*2^\fingerB
-    \centermarkup b4*2^\fingerA
-    \centermarkup bes4*2^\fingerAB
-    \centermarkup a4*2^\fingerBC
-    \centermarkup aes4*2^\fingerO
-    \centermarkup g4*2^\fingerB
-    \centermarkup fis4*2^\fingerA
-    \centermarkup f4*2^\fingerO
-    \centermarkup e4*2^\fingerB
-    \centermarkup ees4*2^\fingerA
-    \centermarkup d4*2^\fingerAB
-    \centermarkup des4*2^\fingerO
-    \centermarkup c4*2^\fingerB
+    \centermarkup e^\fingerB
+    \centermarkup ees^\fingerO
+    \centermarkup d^\fingerB
+    \centermarkup des^\fingerO
+    \centermarkup c^\fingerB
+    \centermarkup b^\fingerA
+    \centermarkup bes^\fingerAB
+    \centermarkup a^\fingerBC
+    \centermarkup aes^\fingerO
+    \centermarkup g^\fingerB
+    \centermarkup fis^\fingerA
+    \centermarkup f^\fingerO
+    \centermarkup e^\fingerB
+    \centermarkup ees^\fingerA
+    \centermarkup d^\fingerAB
+    \centermarkup des^\fingerO
+    \centermarkup c^\fingerB
     s4_\markup \bold \lower #1 "…"
   }
 }
@@ -335,12 +335,12 @@ staccatoExercise = \relative c'' {
       \line { "for the same pitch" }
     }
     \centermarkup c4*2^\fingerTO
-    \centermarkup b4*2^\fingerTB
-    \centermarkup bes4*2^\fingerTA
-    \centermarkup a4*2^\fingerTAB
-    \centermarkup aes4*2^\fingerTBC
-    \centermarkup g4*2^\fingerTAC
-    \centermarkup fis4*2^\fingerTABC
+    \centermarkup b^\fingerTB
+    \centermarkup bes^\fingerTA
+    \centermarkup a^\fingerTAB
+    \centermarkup aes^\fingerTBC
+    \centermarkup g^\fingerTAC
+    \centermarkup fis^\fingerTABC
     \bar "|"
     \tweak direction #DOWN
     \textMark \markup \small \italic \override #'(baseline-skip . 2.5) \column {
@@ -348,11 +348,11 @@ staccatoExercise = \relative c'' {
       \line { \concat { "use 8" \super th " partial fingerings" } }
       \line { "one half step up" }
     }
-    \centermarkup e4*2^\fingerTO
-    \centermarkup ees4*2^\fingerTB
-    \centermarkup d4*2^\fingerTA
-    \centermarkup des4*2^\fingerTAB
-    \centermarkup c4*2^\fingerTBC
+    \centermarkup e^\fingerTO
+    \centermarkup ees^\fingerTB
+    \centermarkup d^\fingerTA
+    \centermarkup des^\fingerTAB
+    \centermarkup c^\fingerTBC
     \bar "|"
   }
 }
@@ -400,77 +400,77 @@ staccatoExercise = \relative c'' {
     \time 4/4
     \tempo 4 = 120 - 176
     \centermarkup f2\p^\fingerTO(
-    \centermarkup e2^\fingerTB |
-    \centermarkup f2\glissando\<^\fingerTO
-    \centermarkup e2^\fullstopped\glissando\ff\> |
-    \centermarkup f2^\fullopen)\! r |
+    \centermarkup e^\fingerTB |
+    \centermarkup f\glissando\<^\fingerTO
+    \centermarkup e^\fullstopped\glissando\ff\> |
+    \centermarkup f^\fullopen)\! r |
     \bar "||"
-    \centermarkup e2^\fingerTB(
-    \centermarkup dis2^\fingerTA |
-    \centermarkup e2\glissando\<^\fingerTB
-    \centermarkup dis2^\fullstopped\glissando\> |
-    \centermarkup e2^\fullopen)\! r |
+    \centermarkup e^\fingerTB(
+    \centermarkup dis^\fingerTA |
+    \centermarkup e\glissando\<^\fingerTB
+    \centermarkup dis^\fullstopped\glissando\> |
+    \centermarkup e^\fullopen)\! r |
     \bar "||"
     \break
-    \centermarkup ees2^\fingerTA(
-    \centermarkup d2^\fingerTAB |
-    \centermarkup ees2\glissando\<^\fingerTA
-    \centermarkup d2^\fullstopped\glissando\> |
-    \centermarkup ees2^\fullopen)\! r |
+    \centermarkup ees^\fingerTA(
+    \centermarkup d^\fingerTAB |
+    \centermarkup ees\glissando\<^\fingerTA
+    \centermarkup d^\fullstopped\glissando\> |
+    \centermarkup ees^\fullopen)\! r |
     \bar "||"
-    \centermarkup d2^\fingerTAB(
-    \centermarkup cis2^\fingerTBC |
-    \centermarkup d2\glissando\<^\fingerTAB
-    \centermarkup cis2^\fullstopped\glissando\> |
-    \centermarkup d2^\fullopen)\! r |
+    \centermarkup d^\fingerTAB(
+    \centermarkup cis^\fingerTBC |
+    \centermarkup d\glissando\<^\fingerTAB
+    \centermarkup cis^\fullstopped\glissando\> |
+    \centermarkup d^\fullopen)\! r |
     \bar "||"
-    \centermarkup des2^\fingerTBC(
-    \centermarkup c2^\fingerTO |
-    \centermarkup des2\glissando\<^\fingerTBC
-    \centermarkup c2^\fullstopped\glissando\> |
-    \centermarkup des2^\fullopen)\! r |
+    \centermarkup des^\fingerTBC(
+    \centermarkup c^\fingerTO |
+    \centermarkup des\glissando\<^\fingerTBC
+    \centermarkup c^\fullstopped\glissando\> |
+    \centermarkup des^\fullopen)\! r |
     \bar "||"
     \textMark \markup \small "The following fingerings may be uncommon on open horn, but correspond to conventional stopped fingerings."
-    \centermarkup c2^\fingerA(
-    \centermarkup b2^\fingerB |
-    \centermarkup c2\glissando\<^\fingerA
-    \centermarkup b2^\fullstopped\glissando\> |
-    \centermarkup c2^\fullopen)\! r |
+    \centermarkup c^\fingerA(
+    \centermarkup b^\fingerB |
+    \centermarkup c\glissando\<^\fingerA
+    \centermarkup b^\fullstopped\glissando\> |
+    \centermarkup c^\fullopen)\! r |
     \bar "||"
-    \centermarkup b2^\fingerAB(
-    \centermarkup ais2^\fingerA |
-    \centermarkup b2\glissando\<^\fingerAB
-    \centermarkup ais2^\fullstopped\glissando\> |
-    \centermarkup b2^\fullopen)\! r |
+    \centermarkup b^\fingerAB(
+    \centermarkup ais^\fingerA |
+    \centermarkup b\glissando\<^\fingerAB
+    \centermarkup ais^\fullstopped\glissando\> |
+    \centermarkup b^\fullopen)\! r |
     \bar "||"
-    \centermarkup bes2^\fingerBC(
-    \centermarkup a2^\fingerAB |
-    \centermarkup bes2\glissando\<^\fingerBC
-    \centermarkup a2^\fullstopped\glissando\> |
-    \centermarkup bes2^\fullopen)\! r |
+    \centermarkup bes^\fingerBC(
+    \centermarkup a^\fingerAB |
+    \centermarkup bes\glissando\<^\fingerBC
+    \centermarkup a^\fullstopped\glissando\> |
+    \centermarkup bes^\fullopen)\! r |
     \bar "||"
     \textMark \markup \small \concat {
       "The out-of-tune 7"
       \super "th"
       " partial is used here to reach certain stopped tones."
     }
-    \centermarkup beseh2^\fingerO(
-    \centermarkup aes2^\fingerBC |
-    \centermarkup beseh2\glissando\<^\fingerO
-    \centermarkup aes2^\fullstopped\glissando\> |
-    \centermarkup beseh2^\fullopen)\! r |
+    \centermarkup beseh^\fingerO(
+    \centermarkup aes^\fingerBC |
+    \centermarkup beseh\glissando\<^\fingerO
+    \centermarkup aes^\fullstopped\glissando\> |
+    \centermarkup beseh^\fullopen)\! r |
     \bar "||"
-    \centermarkup aeh2^\fingerB^(
-    \centermarkup g2^\fingerO |
-    \centermarkup aeh2\glissando\<^\fingerB
-    \centermarkup g2^\fullstopped\glissando\> |
-    \centermarkup aeh2^\fullopen)\! r |
+    \centermarkup aeh^\fingerB^(
+    \centermarkup g^\fingerO |
+    \centermarkup aeh\glissando\<^\fingerB
+    \centermarkup g^\fullstopped\glissando\> |
+    \centermarkup aeh^\fullopen)\! r |
     \bar "||"
-    \centermarkup aeseh2^\fingerA^(
-    \centermarkup ges2^\fingerB |
-    \centermarkup aeseh2\glissando\<^\fingerA
-    \centermarkup ges2^\fullstopped\glissando\> |
-    \centermarkup aeseh2^\fullopen)\! r |
+    \centermarkup aeseh^\fingerA^(
+    \centermarkup ges^\fingerB |
+    \centermarkup aeseh\glissando\<^\fingerA
+    \centermarkup ges^\fullstopped\glissando\> |
+    \centermarkup aeseh^\fullopen)\! r |
     \bar "|."
   }
 }
@@ -499,72 +499,72 @@ staccatoExercise = \relative c'' {
     \time 4/4
     \tempo 4 = 120 - 176
     \centermarkup g2\p^\fingerO(
-    \centermarkup fis2^\fingerB |
-    \centermarkup f2^\fingerA
-    \centermarkup fis2^\fingerB |
-    \centermarkup g2\glissando^\fingerO
+    \centermarkup fis^\fingerB |
+    \centermarkup f^\fingerA
+    \centermarkup fis^\fingerB |
+    \centermarkup g\glissando^\fingerO
     \once \override Glissando.bound-details.left.Y = #-1.25
     \once \override Glissando.bound-details.right.Y = #-1.75
-    \centermarkup fis2^\mostlystopped\glissando\< |
+    \centermarkup fis^\mostlystopped\glissando\< |
     \once \override Glissando.bound-details.left.Y = #-1.75
     \once \override Glissando.bound-details.right.Y = #-1.25
-    \centermarkup f2^\fullstopped\glissando\ff\>
-    \centermarkup fis2^\mostlystopped\glissando\! |
-    \centermarkup g2^\fullopen) r |
+    \centermarkup f^\fullstopped\glissando\ff\>
+    \centermarkup fis^\mostlystopped\glissando\! |
+    \centermarkup g^\fullopen) r |
     \bar "||"
-    \centermarkup ges2^\fingerB(
-    \centermarkup f2^\fingerA |
-    \centermarkup e2^\fingerO
-    \centermarkup f2^\fingerA |
-    \centermarkup ges2\glissando^\fingerB
-    \centermarkup f2^\mostlystopped\glissando\< |
-    \centermarkup e2^\fullstopped\glissando\>
-    \centermarkup f2^\mostlystopped\glissando\! |
-    \centermarkup ges2^\fullopen) r |
+    \centermarkup ges^\fingerB(
+    \centermarkup f^\fingerA |
+    \centermarkup e^\fingerO
+    \centermarkup f^\fingerA |
+    \centermarkup ges\glissando^\fingerB
+    \centermarkup f^\mostlystopped\glissando\< |
+    \centermarkup e^\fullstopped\glissando\>
+    \centermarkup f^\mostlystopped\glissando\! |
+    \centermarkup ges^\fullopen) r |
     \bar "||"
-    \centermarkup f2^\fingerA(
-    \centermarkup e2^\fingerO |
-    \centermarkup dis2^\fingerB
-    \centermarkup e2^\fingerO |
-    \centermarkup f2\glissando^\fingerA
-    \centermarkup e2^\mostlystopped\glissando\< |
-    \centermarkup dis2^\fullstopped\glissando\>
-    \centermarkup e2^\mostlystopped\glissando\! |
-    \centermarkup f2^\fullopen) r |
+    \centermarkup f^\fingerA(
+    \centermarkup e^\fingerO |
+    \centermarkup dis^\fingerB
+    \centermarkup e^\fingerO |
+    \centermarkup f\glissando^\fingerA
+    \centermarkup e^\mostlystopped\glissando\< |
+    \centermarkup dis^\fullstopped\glissando\>
+    \centermarkup e^\mostlystopped\glissando\! |
+    \centermarkup f^\fullopen) r |
     \bar "||"
-    \centermarkup e2^\fingerAB(
-    \centermarkup dis2^\fingerB |
-    \centermarkup d2^\fingerA
-    \centermarkup dis2^\fingerB |
-    \centermarkup e2\glissando^\fingerAB
+    \centermarkup e^\fingerAB(
+    \centermarkup dis^\fingerB |
+    \centermarkup d^\fingerA
+    \centermarkup dis^\fingerB |
+    \centermarkup e\glissando^\fingerAB
     \once \override Glissando.bound-details.left.Y = #-2.25
     \once \override Glissando.bound-details.right.Y = #-2.75
-    \centermarkup dis2^\mostlystopped\glissando\< |
+    \centermarkup dis^\mostlystopped\glissando\< |
     \once \override Glissando.bound-details.left.Y = #-2.75
     \once \override Glissando.bound-details.right.Y = #-2.25
-    \centermarkup d2^\fullstopped\glissando\>
-    \centermarkup dis2^\mostlystopped\glissando\! |
-    \centermarkup e2^\fullopen) r |
+    \centermarkup d^\fullstopped\glissando\>
+    \centermarkup dis^\mostlystopped\glissando\! |
+    \centermarkup e^\fullopen) r |
     \bar "||"
-    \centermarkup e2^\fingerO(
-    \centermarkup dis2^\fingerB |
-    \centermarkup cis2^\fingerAB
-    \centermarkup dis2^\fingerB |
-    \centermarkup e2\glissando^\fingerO
-    \centermarkup dis2^\mostlystopped\glissando\< |
-    \centermarkup cis2^\fullstopped\glissando\>
-    \centermarkup dis2^\mostlystopped\glissando\! |
-    \centermarkup e2^\fullopen) r |
+    \centermarkup e^\fingerO(
+    \centermarkup dis^\fingerB |
+    \centermarkup cis^\fingerAB
+    \centermarkup dis^\fingerB |
+    \centermarkup e\glissando^\fingerO
+    \centermarkup dis^\mostlystopped\glissando\< |
+    \centermarkup cis^\fullstopped\glissando\>
+    \centermarkup dis^\mostlystopped\glissando\! |
+    \centermarkup e^\fullopen) r |
     \bar "||"
-    \centermarkup ees2^\fingerB(
-    \centermarkup d2^\fingerA |
-    \centermarkup c2^\fingerO
-    \centermarkup d2^\fingerA |
-    \centermarkup ees2\glissando^\fingerB
-    \centermarkup d2^\mostlystopped\glissando\< |
-    \centermarkup c2^\fullstopped\glissando\>
-    \centermarkup d2^\mostlystopped\glissando\! |
-    \centermarkup ees2^\fullopen) r |
+    \centermarkup ees^\fingerB(
+    \centermarkup d^\fingerA |
+    \centermarkup c^\fingerO
+    \centermarkup d^\fingerA |
+    \centermarkup ees\glissando^\fingerB
+    \centermarkup d^\mostlystopped\glissando\< |
+    \centermarkup c^\fullstopped\glissando\>
+    \centermarkup d^\mostlystopped\glissando\! |
+    \centermarkup ees^\fullopen) r |
     \bar "|."
   }
 }
