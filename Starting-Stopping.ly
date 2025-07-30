@@ -430,6 +430,7 @@ staccatoExercise = \relative c'' {
     \centermarkup c^\fullstopped\glissando\> |
     \centermarkup des^\fullopen)\! r |
     \bar "||"
+    \break
     \textMark \markup \small "The following fingerings may be uncommon on open horn, but correspond to conventional stopped fingerings."
     \centermarkup c^\fingerA(
     \centermarkup b^\fingerB |
@@ -449,6 +450,7 @@ staccatoExercise = \relative c'' {
     \centermarkup a^\fullstopped\glissando\> |
     \centermarkup bes^\fullopen)\! r |
     \bar "||"
+    \break
     \textMark \markup \small \concat {
       "The out-of-tune 7"
       \super "th"
@@ -478,18 +480,13 @@ staccatoExercise = \relative c'' {
   \header {
     piece = \markup \concat { \box { B } " Long Pitch Bends" }
     subpiece = \markup \wordwrap {
-      Begin by playing the pattern on valve horn,
-      using the suggested fingerings with the bell open.
-      Upon returning to the upper pitch,
-      gradually transition from open
-      to echo (
+      As above, transitioning from open to echo (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
         \vspace #-1.4
         \mostlystopped
       }
-      ) to stopped and back,
-      applying more pressure when stopped.
+      ) to stopped and back.
       Match intonation between all tones.
     }
   }
