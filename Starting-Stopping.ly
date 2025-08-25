@@ -27,6 +27,14 @@ date = #(strftime "%Y–%m–%d" (localtime (current-time)))
 }
 
 centermarkup = {
+  \once \override TextScript.staff-padding = #1.5
+  \once \override TextScript.self-alignment-X = #CENTER
+  \once \override TextScript.X-offset = #(lambda (g)
+  (+ (ly:self-alignment-interface::centered-on-x-parent g)
+     (ly:self-alignment-interface::x-aligned-on-self g)))
+}
+centermarkupStopped = {
+  \once \override TextScript.staff-padding = #2
   \once \override TextScript.self-alignment-X = #CENTER
   \once \override TextScript.X-offset = #(lambda (g)
   (+ (ly:self-alignment-interface::centered-on-x-parent g)
@@ -199,6 +207,7 @@ staccatoExercise = \relative c'' {
       \Staff
       alterationGlyphs =
         #'((1/2 . "accidentals.sharp")
+           (1/4 . "accidentals.sharp.arrowdown")
            (0 . "accidentals.natural")
            (-1/4 . "accidentals.natural.arrowdown")
            (-1/2 . "accidentals.flat")
@@ -211,13 +220,13 @@ staccatoExercise = \relative c'' {
     \set Score.timing = ##f
     \omit Staff.TimeSignature
     \textMark \markup \small \italic "open"
-    \centermarkup e4(^\fullopen d c beseh g e c2)
+    \centermarkupStopped e4(^\fullopen d c beseh g e c2)
     \bar "|"
     \textMark \markup \small \italic "echo (mostly stopped)"
-    \centermarkup dis'4(^\mostlystopped cis b aeh fis dis b2)
+    \centermarkupStopped dis'4(^\mostlystopped cis b aeh fis dis b2)
     \bar "|"
     \textMark \markup \small \italic "fully stopped"
-    \centermarkup f''4(^\fullstopped ees des ceseh aes f des2)
+    \centermarkupStopped f''4(^\fullstopped ees des ceseh aes f des2)
     \bar "|"
   }
 }
@@ -243,6 +252,7 @@ staccatoExercise = \relative c'' {
       \override HorizontalBracketText.text = \markup \italic "half step"
       alterationGlyphs =
         #'((1/2 . "accidentals.sharp")
+           (1/4 . "accidentals.sharp.arrowdown")
            (0 . "accidentals.natural")
            (-1/4 . "accidentals.natural.arrowdown")
            (-1/2 . "accidentals.flat")
@@ -256,11 +266,18 @@ staccatoExercise = \relative c'' {
     \override Stem.length = 0
     \set fingeringOrientations = #'(left)
     \override Fingering.whiteout = ##t
+    \override Glissando.thickness = #2
 
+    \textMark \markup \small \italic \concat { 11 \super th " partial" }
+    \once \override Glissando.bound-details.left.Y = #2.25
+    \once \override Glissando.bound-details.right.Y = #1.75
+    fih2*2^\open\glissando
+    f4*4^\stopped\startGroup
+    \bar "|"
     \textMark \markup \small \italic \concat { 10 \super th " partial" }
     \once \override Glissando.bound-details.left.Y = #1.75
     \once \override Glissando.bound-details.right.Y = #1.25
-    e2*2^\open\glissando
+    e2*2^\open\glissando\stopGroup
     ees4*4^\stopped\startGroup
     \bar "|"
     \textMark \markup \small \italic \concat { 9 \super th " partial" }
@@ -395,6 +412,7 @@ staccatoExercise = \relative c'' {
       \Staff
       alterationGlyphs =
         #'((1/2 . "accidentals.sharp")
+           (1/4 . "accidentals.sharp.arrowdown")
            (0 . "accidentals.natural")
            (-1/4 . "accidentals.natural.arrowdown")
            (-1/2 . "accidentals.flat")
@@ -428,58 +446,62 @@ staccatoExercise = \relative c'' {
   \new Staff
   \relative c'' {
     \accidentalStyle Score.modern
+    \override TextScript.avoid-slur = #'inside
+    \override TextScript.outside-staff-priority = ##f
+    \override Glissando.thickness = #2
+
     \time 4/4
     \tempo 4 = 120 - 176
     \centermarkup f2\p^\fingerTO(
     \centermarkup e^\fingerTB |
     \centermarkup f\glissando\<^\fingerTO
-    \centermarkup e^\fullstopped\glissando\ff\> |
-    \centermarkup f^\fullopen)\! r |
+    \centermarkupStopped e^\fullstopped\glissando\ff\> |
+    \centermarkupStopped f^\fullopen)\! r |
     \bar "||"
     \centermarkup e^\fingerTB(
     \centermarkup dis^\fingerTA |
     \centermarkup e\glissando\<^\fingerTB
-    \centermarkup dis^\fullstopped\glissando\> |
-    \centermarkup e^\fullopen)\! r |
+    \centermarkupStopped dis^\fullstopped\glissando\> |
+    \centermarkupStopped e^\fullopen)\! r |
     \bar "||"
     \break
     \centermarkup ees^\fingerTA(
     \centermarkup d^\fingerTAB |
     \centermarkup ees\glissando\<^\fingerTA
-    \centermarkup d^\fullstopped\glissando\> |
-    \centermarkup ees^\fullopen)\! r |
+    \centermarkupStopped d^\fullstopped\glissando\> |
+    \centermarkupStopped ees^\fullopen)\! r |
     \bar "||"
     \centermarkup d^\fingerTAB(
     \centermarkup cis^\fingerTBC |
     \centermarkup d\glissando\<^\fingerTAB
-    \centermarkup cis^\fullstopped\glissando\> |
-    \centermarkup d^\fullopen)\! r |
+    \centermarkupStopped cis^\fullstopped\glissando\> |
+    \centermarkupStopped d^\fullopen)\! r |
     \bar "||"
     \centermarkup des^\fingerTBC(
     \centermarkup c^\fingerTO |
     \centermarkup des\glissando\<^\fingerTBC
-    \centermarkup c^\fullstopped\glissando\> |
-    \centermarkup des^\fullopen)\! r |
+    \centermarkupStopped c^\fullstopped\glissando\> |
+    \centermarkupStopped des^\fullopen)\! r |
     \bar "||"
     \break
     \textMark \markup \small "The following fingerings may be uncommon on open horn, but correspond to conventional stopped fingerings."
     \centermarkup c^\fingerLA(
     \centermarkup b^\fingerLB |
     \centermarkup c\glissando\<^\fingerLA
-    \centermarkup b^\fullstopped\glissando\> |
-    \centermarkup c^\fullopen)\! r |
+    \centermarkupStopped b^\fullstopped\glissando\> |
+    \centermarkupStopped c^\fullopen)\! r |
     \bar "||"
     \centermarkup b^\fingerLAB(
     \centermarkup ais^\fingerLA |
     \centermarkup b\glissando\<^\fingerLAB
-    \centermarkup ais^\fullstopped\glissando\> |
-    \centermarkup b^\fullopen)\! r |
+    \centermarkupStopped ais^\fullstopped\glissando\> |
+    \centermarkupStopped b^\fullopen)\! r |
     \bar "||"
     \centermarkup bes^\fingerLBC(
     \centermarkup a^\fingerLAB |
     \centermarkup bes\glissando\<^\fingerLBC
-    \centermarkup a^\fullstopped\glissando\> |
-    \centermarkup bes^\fullopen)\! r |
+    \centermarkupStopped a^\fullstopped\glissando\> |
+    \centermarkupStopped bes^\fullopen)\! r |
     \bar "||"
     \break
     \textMark \markup \small \concat {
@@ -490,20 +512,20 @@ staccatoExercise = \relative c'' {
     \centermarkup beseh^\fingerLO(
     \centermarkup aes^\fingerLBC |
     \centermarkup beseh\glissando\<^\fingerLO
-    \centermarkup aes^\fullstopped\glissando\> |
-    \centermarkup beseh^\fullopen)\! r |
+    \centermarkupStopped aes^\fullstopped\glissando\> |
+    \centermarkupStopped beseh^\fullopen)\! r |
     \bar "||"
     \centermarkup aeh^\fingerLB^(
     \centermarkup g^\fingerLO |
     \centermarkup aeh\glissando\<^\fingerLB
-    \centermarkup g^\fullstopped\glissando\> |
-    \centermarkup aeh^\fullopen)\! r |
+    \centermarkupStopped g^\fullstopped\glissando\> |
+    \centermarkupStopped aeh^\fullopen)\! r |
     \bar "||"
     \centermarkup aeseh^\fingerLA^(
     \centermarkup ges^\fingerLB |
     \centermarkup aeseh\glissando\<^\fingerLA
-    \centermarkup ges^\fullstopped\glissando\> |
-    \centermarkup aeseh^\fullopen)\! r |
+    \centermarkupStopped ges^\fullstopped\glissando\> |
+    \centermarkupStopped aeseh^\fullopen)\! r |
     \bar "|."
   }
 }
@@ -524,6 +546,8 @@ staccatoExercise = \relative c'' {
   \new Staff
   \relative c'' {
     \accidentalStyle Score.modern
+    \override Glissando.thickness = #2
+
     \time 4/4
     \tempo 4 = 120 - 176
     \centermarkup g2\p^\fingerLO(
@@ -533,32 +557,32 @@ staccatoExercise = \relative c'' {
     \centermarkup g\glissando^\fingerLO
     \once \override Glissando.bound-details.left.Y = #-1.25
     \once \override Glissando.bound-details.right.Y = #-1.75
-    \centermarkup fis^\mostlystopped\glissando\< |
+    \centermarkupStopped fis^\mostlystopped\glissando\< |
     \once \override Glissando.bound-details.left.Y = #-1.75
     \once \override Glissando.bound-details.right.Y = #-1.25
-    \centermarkup f^\fullstopped\glissando\ff\>
-    \centermarkup fis^\mostlystopped\glissando\! |
-    \centermarkup g^\fullopen) r |
+    \centermarkupStopped f^\fullstopped\glissando\ff\>
+    \centermarkupStopped fis^\mostlystopped\glissando\! |
+    \centermarkupStopped g^\fullopen) r |
     \bar "||"
     \centermarkup ges^\fingerLB(
     \centermarkup f^\fingerLA |
     \centermarkup e^\fingerLO
     \centermarkup f^\fingerLA |
     \centermarkup ges\glissando^\fingerLB
-    \centermarkup f^\mostlystopped\glissando\< |
-    \centermarkup e^\fullstopped\glissando\>
-    \centermarkup f^\mostlystopped\glissando\! |
-    \centermarkup ges^\fullopen) r |
+    \centermarkupStopped f^\mostlystopped\glissando\< |
+    \centermarkupStopped e^\fullstopped\glissando\>
+    \centermarkupStopped f^\mostlystopped\glissando\! |
+    \centermarkupStopped ges^\fullopen) r |
     \bar "||"
     \centermarkup f^\fingerLA(
     \centermarkup e^\fingerLO |
     \centermarkup dis^\fingerLB
     \centermarkup e^\fingerLO |
     \centermarkup f\glissando^\fingerLA
-    \centermarkup e^\mostlystopped\glissando\< |
-    \centermarkup dis^\fullstopped\glissando\>
-    \centermarkup e^\mostlystopped\glissando\! |
-    \centermarkup f^\fullopen) r |
+    \centermarkupStopped e^\mostlystopped\glissando\< |
+    \centermarkupStopped dis^\fullstopped\glissando\>
+    \centermarkupStopped e^\mostlystopped\glissando\! |
+    \centermarkupStopped f^\fullopen) r |
     \bar "||"
     \centermarkup e^\fingerLAB(
     \centermarkup dis^\fingerLB |
@@ -567,32 +591,32 @@ staccatoExercise = \relative c'' {
     \centermarkup e\glissando^\fingerLAB
     \once \override Glissando.bound-details.left.Y = #-2.25
     \once \override Glissando.bound-details.right.Y = #-2.75
-    \centermarkup dis^\mostlystopped\glissando\< |
+    \centermarkupStopped dis^\mostlystopped\glissando\< |
     \once \override Glissando.bound-details.left.Y = #-2.75
     \once \override Glissando.bound-details.right.Y = #-2.25
-    \centermarkup d^\fullstopped\glissando\>
-    \centermarkup dis^\mostlystopped\glissando\! |
-    \centermarkup e^\fullopen) r |
+    \centermarkupStopped d^\fullstopped\glissando\>
+    \centermarkupStopped dis^\mostlystopped\glissando\! |
+    \centermarkupStopped e^\fullopen) r |
     \bar "||"
     \centermarkup e^\fingerLO(
     \centermarkup dis^\fingerLB |
     \centermarkup cis^\fingerLAB
     \centermarkup dis^\fingerLB |
     \centermarkup e\glissando^\fingerLO
-    \centermarkup dis^\mostlystopped\glissando\< |
-    \centermarkup cis^\fullstopped\glissando\>
-    \centermarkup dis^\mostlystopped\glissando\! |
-    \centermarkup e^\fullopen) r |
+    \centermarkupStopped dis^\mostlystopped\glissando\< |
+    \centermarkupStopped cis^\fullstopped\glissando\>
+    \centermarkupStopped dis^\mostlystopped\glissando\! |
+    \centermarkupStopped e^\fullopen) r |
     \bar "||"
     \centermarkup ees^\fingerLB(
     \centermarkup d^\fingerLA |
     \centermarkup c^\fingerLO
     \centermarkup d^\fingerLA |
     \centermarkup ees\glissando^\fingerLB
-    \centermarkup d^\mostlystopped\glissando\< |
-    \centermarkup c^\fullstopped\glissando\>
-    \centermarkup d^\mostlystopped\glissando\! |
-    \centermarkup ees^\fullopen) r |
+    \centermarkupStopped d^\mostlystopped\glissando\< |
+    \centermarkupStopped c^\fullstopped\glissando\>
+    \centermarkupStopped d^\mostlystopped\glissando\! |
+    \centermarkupStopped ees^\fullopen) r |
     \bar "|."
   }
 }
@@ -619,6 +643,7 @@ staccatoExercise = \relative c'' {
   \new Staff
   \relative c'' {
     \accidentalStyle Score.modern
+
     \time 4/4
     \tempo 4 = 76 - 120
     <<
