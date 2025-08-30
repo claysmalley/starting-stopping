@@ -41,14 +41,14 @@ centermarkupStopped = {
      (ly:self-alignment-interface::x-aligned-on-self g)))
 }
 
-fingerTO = \markup \overtie \abs-fontsize #6 \slashed-digit #0
+fingerTO = \markup \overtie \abs-fontsize #6 \concat { " " \slashed-digit #0 " " }
 fingerTB = \markup \overtie \abs-fontsize #6 \finger " 2 "
 fingerTA = \markup \overtie \abs-fontsize #6 \finger " 1 "
 fingerTAB = \markup \overtie \abs-fontsize #6 \finger 12
 fingerTBC = \markup \overtie \abs-fontsize #6 \finger 23
 fingerTAC = \markup \overtie \abs-fontsize #6 \finger 13
 fingerTABC = \markup \overtie \abs-fontsize #6 \finger 123
-fingerLO = \markup \undertie \abs-fontsize #6 \slashed-digit #0
+fingerLO = \markup \undertie \abs-fontsize #6 \concat { " " \slashed-digit #0 " " }
 fingerLB = \markup \undertie \abs-fontsize #6 \finger " 2 "
 fingerLA = \markup \undertie \abs-fontsize #6 \finger " 1 "
 fingerLAB = \markup \undertie \abs-fontsize #6 \finger 12
