@@ -67,6 +67,9 @@ mostlystopped = \markup {
 fullstopped = \markup {
   \abs-fontsize #12 \musicglyph "scripts.stopped"
 }
+fullopeninline = \markup \concat { \abs-fontsize #5 " " \fullopen }
+mostlystoppedinline = \markup \concat { \abs-fontsize #4 " " \mostlystopped }
+fullstoppedinline = \markup \concat { \abs-fontsize #5 " " \fullstopped }
 
 staccatoExercise = \relative c'' {
   f2
@@ -89,7 +92,7 @@ staccatoExercise = \relative c'' {
   One of the most noticeable differences between the horn and other brass instruments is the movement of the right hand in the bell.
   Historically, this was done on valveless, or \italic natural, horns,
   to reach pitches in between those along the harmonic series.
-  Nowadays, on valve horns, the right hand is mostly used to make fine adjustments to intonation, 
+  Nowadays, on valve horns, the right hand is mostly used to make fine adjustments to intonation,
   as well as playing stopped (
   \center-column {
     \musicglyph "noteheads.s1"
@@ -130,9 +133,9 @@ staccatoExercise = \relative c'' {
   }
   <<
     \figures {
-      <\markup \concat { \abs-fontsize #5 " " \fullopen } >1*2
-      <\markup \concat { \abs-fontsize #5 " " \mostlystopped } >1*2
-      <\markup \concat { \abs-fontsize #5 " " \fullstopped } >1*2
+      <\markup \fullopeninline>1*2
+      <\markup \mostlystoppedinline>1*2
+      <\markup \fullstoppedinline>1*2
     }
     \new Staff
     \relative c'' {
@@ -184,10 +187,10 @@ staccatoExercise = \relative c'' {
     \figures {
       \bassFigureExtendersOn
       \repeat unfold 8 {
-        <\markup \concat { \abs-fontsize #5 " " \fullopen } >1
-        <\markup \concat { \abs-fontsize #5 " " \fullstopped } >1
+        <\markup \fullopeninline>1
+        <\markup \fullstoppedinline>1
       }
-      <\markup \concat { \abs-fontsize #5 " " \fullopen } >1
+      <\markup \fullopeninline>1
     }
     \new Staff
     \relative c'' {
@@ -256,6 +259,27 @@ staccatoExercise = \relative c'' {
     }
   }
   <<
+    \figures {
+      \bassFigureExtendersOn
+      <0/>2
+      <2>2
+      <0/>2
+      <2>2
+      <0/>2
+      <2>2
+      <1>2
+      <12>2
+      <23>2
+      <0/>2
+      <2>2
+      <1>2
+      <0/>2
+      <2>2
+      <1>2
+      <12>2
+      <0/>2
+      <2>2
+    }
     \new Staff
     \relative c'' {
       \set Score.timing = ##f
@@ -283,27 +307,6 @@ staccatoExercise = \relative c'' {
       c
       s4_\markup \bold \lower #1 "…"
     }
-    \figures {
-      \bassFigureExtendersOn
-      <0/>2
-      <2>2
-      <0/>2
-      <2>2
-      <0/>2
-      <2>2
-      <1>2
-      <12>2
-      <23>2
-      <0/>2
-      <2>2
-      <1>2
-      <0/>2
-      <2>2
-      <1>2
-      <12>2
-      <0/>2
-      <2>2
-    }
   >>
 }
 \markup \wordwrap {
@@ -324,6 +327,21 @@ staccatoExercise = \relative c'' {
     }
   }
   <<
+    \figures {
+      \bassFigureExtendersOn
+      <0/>2
+      <2>2
+      <1>2
+      <12>2
+      <23>2
+      <13>2
+      <123>2
+      <0/>2
+      <2>2
+      <1>2
+      <12>2
+      <23>2
+    }
     \new Staff
     \relative c''' {
       \set Score.timing = ##f
@@ -357,21 +375,6 @@ staccatoExercise = \relative c'' {
       des
       c
       \bar "|"
-    }
-    \figures {
-      \bassFigureExtendersOn
-      <0/>2
-      <2>2
-      <1>2
-      <12>2
-      <23>2
-      <13>2
-      <123>2
-      <0/>2
-      <2>2
-      <1>2
-      <12>2
-      <23>2
     }
   >>
 }
@@ -417,14 +420,72 @@ staccatoExercise = \relative c'' {
   <<
     \figures {
       \bassFigureExtendersOn
-      \repeat unfold 11 {
-        <\markup \concat { \abs-fontsize #5 " " \fullopen } >2
-        2
-        2
-        <\markup \concat { \abs-fontsize #5 " " \fullstopped } >2
-        <\markup \concat { \abs-fontsize #5 " " \fullopen } >2
-        r2
-      }
+      <\markup \fingerBes 0/ \markup \fullopeninline>2
+      <\markup \fingerBes 2 \markup \fullopeninline>2
+      <\markup \fingerBes 0/ \markup \fullopeninline>2
+      <\markup \fingerBes 0/ \markup \fullstoppedinline>2
+      <\markup \fingerBes 0/ \markup \fullopeninline>2
+      r2
+      <\markup \fingerBes 2 \markup \fullopeninline>2
+      <\markup \fingerBes 1 \markup \fullopeninline>2
+      <\markup \fingerBes 2 \markup \fullopeninline>2
+      <\markup \fingerBes 2 \markup \fullstoppedinline>2
+      <\markup \fingerBes 2 \markup \fullopeninline>2
+      r2
+      <\markup \fingerBes 1 \markup \fullopeninline>2
+      <\markup \fingerBes 12 \markup \fullopeninline>2
+      <\markup \fingerBes 1 \markup \fullopeninline>2
+      <\markup \fingerBes 1 \markup \fullstoppedinline>2
+      <\markup \fingerBes 1 \markup \fullopeninline>2
+      r2
+      <\markup \fingerBes 12 \markup \fullopeninline>2
+      <\markup \fingerBes 23 \markup \fullopeninline>2
+      <\markup \fingerBes 12 \markup \fullopeninline>2
+      <\markup \fingerBes 12 \markup \fullstoppedinline>2
+      <\markup \fingerBes 12 \markup \fullopeninline>2
+      r2
+      <\markup \fingerBes 23 \markup \fullopeninline>2
+      <\markup \fingerBes 0/ \markup \fullopeninline>2
+      <\markup \fingerBes 23 \markup \fullopeninline>2
+      <\markup \fingerBes 23 \markup \fullstoppedinline>2
+      <\markup \fingerBes 23 \markup \fullopeninline>2
+      r2
+      <\markup \fingerF 1 \markup \fullopeninline>2
+      <\markup \fingerF 2 \markup \fullopeninline>2
+      <\markup \fingerF 1 \markup \fullopeninline>2
+      <\markup \fingerF 1 \markup \fullstoppedinline>2
+      <\markup \fingerF 1 \markup \fullopeninline>2
+      r2
+      <\markup \fingerF 12 \markup \fullopeninline>2
+      <\markup \fingerF 1 \markup \fullopeninline>2
+      <\markup \fingerF 12 \markup \fullopeninline>2
+      <\markup \fingerF 12 \markup \fullstoppedinline>2
+      <\markup \fingerF 12 \markup \fullopeninline>2
+      r2
+      <\markup \fingerF 23 \markup \fullopeninline>2
+      <\markup \fingerF 12 \markup \fullopeninline>2
+      <\markup \fingerF 23 \markup \fullopeninline>2
+      <\markup \fingerF 23 \markup \fullstoppedinline>2
+      <\markup \fingerF 23 \markup \fullopeninline>2
+      r2
+      <\markup \fingerF 0/ \markup \fullopeninline>2
+      <\markup \fingerF 23 \markup \fullopeninline>2
+      <\markup \fingerF 0/ \markup \fullopeninline>2
+      <\markup \fingerF 0/ \markup \fullstoppedinline>2
+      <\markup \fingerF 0/ \markup \fullopeninline>2
+      r2
+      <\markup \fingerF 2 \markup \fullopeninline>2
+      <\markup \fingerF 0/ \markup \fullopeninline>2
+      <\markup \fingerF 2 \markup \fullopeninline>2
+      <\markup \fingerF 2 \markup \fullstoppedinline>2
+      <\markup \fingerF 2 \markup \fullopeninline>2
+      r2
+      <\markup \fingerF 1 \markup \fullopeninline>2
+      <\markup \fingerF 2 \markup \fullopeninline>2
+      <\markup \fingerF 1 \markup \fullopeninline>2
+      <\markup \fingerF 1 \markup \fullstoppedinline>2
+      <\markup \fingerF 1 \markup \fullopeninline>2
+      r2
     }
     \new Staff
     \relative c'' {
@@ -498,87 +559,18 @@ staccatoExercise = \relative c'' {
       aes\glissando\> |
       beseh)\! r |
       \bar "||"
-      aeh^(
+      aeh(
       g |
       aeh\glissando\<
       g\glissando\> |
       aeh)\! r |
       \bar "||"
-      aeseh^(
+      aeseh(
       ges |
       aeseh\glissando\<
       ges\glissando\> |
       aeseh)\! r |
       \bar "|."
-    }
-    \figures {
-      \bassFigureExtendersOn
-      <\markup \fingerBes 0/>2
-      <\markup \fingerBes 2>2
-      <\markup \fingerBes 0/>2
-      2
-      2
-      r2
-      <\markup \fingerBes 2>2
-      <\markup \fingerBes 1>2
-      <\markup \fingerBes 2>2
-      2
-      2
-      r2
-      <\markup \fingerBes 1>2
-      <\markup \fingerBes 12>2
-      <\markup \fingerBes 1>2
-      2
-      2
-      r2
-      <\markup \fingerBes 12>2
-      <\markup \fingerBes 23>2
-      <\markup \fingerBes 12>2
-      2
-      2
-      r2
-      <\markup \fingerBes 23>2
-      <\markup \fingerBes 0/>2
-      <\markup \fingerBes 23>2
-      2
-      2
-      r2
-      <\markup \fingerF 1>2
-      <\markup \fingerF 2>2
-      <\markup \fingerF 1>2
-      2
-      2
-      r2
-      <\markup \fingerF 12>2
-      <\markup \fingerF 1>2
-      <\markup \fingerF 12>2
-      2
-      2
-      r2
-      <\markup \fingerF 23>2
-      <\markup \fingerF 12>2
-      <\markup \fingerF 23>2
-      2
-      2
-      r2
-      <\markup \fingerF 0/>2
-      <\markup \fingerF 23>2
-      <\markup \fingerF 0/>2
-      2
-      2
-      r2
-      <\markup \fingerF 2>2
-      <\markup \fingerF 0/>2
-      <\markup \fingerF 2>2
-      2
-      2
-      r2
-      <\markup \fingerF 1>2
-      <\markup \fingerF 2>2
-      <\markup \fingerF 1>2
-      2
-      2
-      r2
     }
   >>
 }
@@ -599,18 +591,66 @@ staccatoExercise = \relative c'' {
   <<
     \figures {
       \bassFigureExtendersOn
-      \repeat unfold 6 {
-        <\markup \concat { \abs-fontsize #5 " " \fullopen } >2
-        2
-        2
-        2
-        2
-        <\markup \concat { \abs-fontsize #5 " " \mostlystopped } >2
-        <\markup \concat { \abs-fontsize #5 " " \fullstopped } >2
-        <\markup \concat { \abs-fontsize #5 " " \mostlystopped } >2
-        <\markup \concat { \abs-fontsize #5 " " \fullopen } >2
-        r2
-      }
+      <\markup \fingerF 0/ \fullopeninline>2
+      <\markup \fingerF 2 \fullopeninline>2
+      <\markup \fingerF 1 \fullopeninline>2
+      <\markup \fingerF 2 \fullopeninline>2
+      <\markup \fingerF 0/ \fullopeninline>2
+      <\markup \fingerF 0/ \mostlystoppedinline>2
+      <\markup \fingerF 0/ \fullstoppedinline>2
+      <\markup \fingerF 0/ \mostlystoppedinline>2
+      <\markup \fingerF 0/ \fullopeninline>2
+      r2
+      <\markup \fingerF 2 \fullopeninline>2
+      <\markup \fingerF 1 \fullopeninline>2
+      <\markup \fingerF 0/ \fullopeninline>2
+      <\markup \fingerF 1 \fullopeninline>2
+      <\markup \fingerF 2 \fullopeninline>2
+      <\markup \fingerF 2 \mostlystoppedinline>2
+      <\markup \fingerF 2 \fullstoppedinline>2
+      <\markup \fingerF 2 \mostlystoppedinline>2
+      <\markup \fingerF 2 \fullopeninline>2
+      r2
+      <\markup \fingerF 1 \fullopeninline>2
+      <\markup \fingerF 0/ \fullopeninline>2
+      <\markup \fingerF 2 \fullopeninline>2
+      <\markup \fingerF 0/ \fullopeninline>2
+      <\markup \fingerF 1 \fullopeninline>2
+      <\markup \fingerF 1 \mostlystoppedinline>2
+      <\markup \fingerF 1 \fullstoppedinline>2
+      <\markup \fingerF 1 \mostlystoppedinline>2
+      <\markup \fingerF 1 \fullopeninline>2
+      r2
+      <\markup \fingerF 12 \fullopeninline>2
+      <\markup \fingerF 2 \fullopeninline>2
+      <\markup \fingerF 1 \fullopeninline>2
+      <\markup \fingerF 2 \fullopeninline>2
+      <\markup \fingerF 12 \fullopeninline>2
+      <\markup \fingerF 12 \mostlystoppedinline>2
+      <\markup \fingerF 12 \fullstoppedinline>2
+      <\markup \fingerF 12 \mostlystoppedinline>2
+      <\markup \fingerF 12 \fullopeninline>2
+      r2
+      <\markup \fingerF 0/ \fullopeninline>2
+      <\markup \fingerF 2 \fullopeninline>2
+      <\markup \fingerF 12 \fullopeninline>2
+      <\markup \fingerF 2 \fullopeninline>2
+      <\markup \fingerF 0/ \fullopeninline>2
+      <\markup \fingerF 0/ \mostlystoppedinline>2
+      <\markup \fingerF 0/ \fullstoppedinline>2
+      <\markup \fingerF 0/ \mostlystoppedinline>2
+      <\markup \fingerF 0/ \fullopeninline>2
+      r2
+      <\markup \fingerF 2 \fullopeninline>2
+      <\markup \fingerF 1 \fullopeninline>2
+      <\markup \fingerF 0/ \fullopeninline>2
+      <\markup \fingerF 1 \fullopeninline>2
+      <\markup \fingerF 2 \fullopeninline>2
+      <\markup \fingerF 2 \mostlystoppedinline>2
+      <\markup \fingerF 2 \fullstoppedinline>2
+      <\markup \fingerF 2 \mostlystoppedinline>2
+      <\markup \fingerF 2 \fullopeninline>2
+      r2
     }
     \new Staff
     \relative c'' {
@@ -688,69 +728,6 @@ staccatoExercise = \relative c'' {
       ees) r |
       \bar "|."
     }
-    \figures {
-      \bassFigureExtendersOn
-      <\markup \fingerF 0/>2
-      <\markup \fingerF 2>2
-      <\markup \fingerF 1>2
-      <\markup \fingerF 2>2
-      <\markup \fingerF 0/>2
-      2
-      2
-      2
-      2
-      r2
-      <\markup \fingerF 2>2
-      <\markup \fingerF 1>2
-      <\markup \fingerF 0/>2
-      <\markup \fingerF 1>2
-      <\markup \fingerF 2>2
-      2
-      2
-      2
-      2
-      r2
-      <\markup \fingerF 1>2
-      <\markup \fingerF 0/>2
-      <\markup \fingerF 2>2
-      <\markup \fingerF 0/>2
-      <\markup \fingerF 1>2
-      2
-      2
-      2
-      2
-      r2
-      <\markup \fingerF 12>2
-      <\markup \fingerF 2>2
-      <\markup \fingerF 1>2
-      <\markup \fingerF 2>2
-      <\markup \fingerF 12>2
-      2
-      2
-      2
-      2
-      r2
-      <\markup \fingerF 0/>2
-      <\markup \fingerF 2>2
-      <\markup \fingerF 12>2
-      <\markup \fingerF 2>2
-      <\markup \fingerF 0/>2
-      2
-      2
-      2
-      2
-      r2
-      <\markup \fingerF 2>2
-      <\markup \fingerF 1>2
-      <\markup \fingerF 0/>2
-      <\markup \fingerF 1>2
-      <\markup \fingerF 2>2
-      2
-      2
-      2
-      2
-      r2
-    }
   >>
 }
 \pageBreak
@@ -777,19 +754,19 @@ staccatoExercise = \relative c'' {
     \figures {
       \bassFigureExtendersOn
       \repeat unfold 18 {
-        <\markup \concat { \abs-fontsize #5 " " \fullopen } >2
-        <\markup \concat { \abs-fontsize #5 " " \fullstopped } >2
+        <\markup \fullopeninline>2
+        <\markup \fullstoppedinline>2
         \repeat unfold 2 {
-          <\markup \concat { \abs-fontsize #5 " " \fullopen } >4
-          <\markup \concat { \abs-fontsize #5 " " \fullstopped } >4
+          <\markup \fullopeninline>4
+          <\markup \fullstoppedinline>4
         }
         \repeat unfold 2 {
-          <\markup \concat { \abs-fontsize #5 " " \fullopen } >8
+          <\markup \fullopeninline>8
           8
-          <\markup \concat { \abs-fontsize #5 " " \fullstopped } >8
+          <\markup \fullstoppedinline>8
           8
         }
-        <\markup \concat { \abs-fontsize #5 " " \fullopen } >2
+        <\markup \fullopeninline>2
         r2
       }
     }
