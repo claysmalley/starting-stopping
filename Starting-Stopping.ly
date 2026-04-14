@@ -18,7 +18,6 @@ date = #(strftime "%Y–%m–%d" (localtime (current-time)))
   scoreTitleMarkup = \markup {
     \override #`(direction . ,UP)
     \dir-column {
-      \small \override #'(baseline-skip . 2.5)
       \fromproperty #'header:subpiece
       \bold \fontsize #1
       \fromproperty #'header:piece
@@ -88,8 +87,8 @@ staccatoExercise = \relative c'' {
   r |
 }
 
-\markup \wordwrap {
-  One of the most noticeable differences between the horn and other brass instruments is the movement of the right hand in the bell.
+\markup \justify {
+  The horn is unique among instruments in that the hand is placed in the bell while playing.
   Historically, this was done on valveless, or \italic natural, horns,
   to reach pitches in between those along the harmonic series.
   Nowadays, on valve horns, the right hand is mostly used to make fine adjustments to intonation,
@@ -108,7 +107,7 @@ staccatoExercise = \relative c'' {
   ) tones.
 }
 \markup \null
-\markup \wordwrap {
+\markup \justify {
   An everlasting source of confusion for new hornists
   is whether stopping the bell raises or lowers the pitch produced.
   By playing a long tone and gradually closing the bell,
@@ -154,7 +153,7 @@ staccatoExercise = \relative c'' {
     }
   >>
 }
-\markup \wordwrap {
+\markup \justify {
   So what is happening here?
   Each open tone on the F horn indeed has a corresponding stopped tone a half step up,
   but the stopped tone actually comes from bending down the next highest partial—a hidden barber pole effect.
@@ -247,7 +246,7 @@ staccatoExercise = \relative c'' {
     }
   >>
 }
-\markup \wordwrap {
+\markup \justify {
   So, on the F horn, fingering a half step down while stopped is a useful mnemonic:
 }
 \markup \null
@@ -287,29 +286,30 @@ staccatoExercise = \relative c'' {
       \override Stem.length = 0
 
       \clef treble
-      f4*2
-      e
-      ees
-      d
-      des
-      c
-      b
-      bes
-      a
-      aes
-      g
-      fis
-      f
-      e
-      ees
-      d
-      des
-      c
+      \textMark \markup \small \italic \bold "F horn"
+      f4*2^+
+      e^+
+      ees^+
+      d^+
+      des^+
+      c^+
+      b^+
+      bes^+
+      a^+
+      aes^+
+      g^+
+      fis^+
+      f^+
+      e^+
+      ees^+
+      d^+
+      des^+
+      c^+
       s4_\markup \bold \lower #1 "…"
     }
   >>
 }
-\markup \wordwrap {
+\markup \justify {
   Though a limited set of fingerings can counteract the out-of-tune
   \concat { 7 \super th } and \concat { 11 \super th } partials
   and bring the stopped \concat { B \super \flat } horn back into tune.
@@ -349,31 +349,29 @@ staccatoExercise = \relative c'' {
       \override Stem.length = 0
 
       \clef treble
-      \tweak direction #DOWN
       \textMark \markup \small \italic \override #'(baseline-skip . 2.5) \column {
-        \line { \concat { "B" \super \flat " horn, 11" \super th " partial:" } }
-        \line { \concat { "use 12" \super th " partial fingerings" } }
+        \line { \concat { \bold "B" \bold \super \flat \bold " horn," " 11" \super th " partial:" } }
+        \line { \concat { "Use 12" \super th " partial fingerings" } }
         \line { "for the same pitch" }
       }
-      c4*2
-      b
-      bes
-      a
-      aes
-      g
-      fis
+      c4*2^+
+      b^+
+      bes^+
+      a^+
+      aes^+
+      g^+
+      fis^+
       \bar "|"
-      \tweak direction #DOWN
       \textMark \markup \small \italic \override #'(baseline-skip . 2.5) \column {
-        \line { \concat { "B" \super \flat " horn, 7" \super th " partial:" } }
-        \line { \concat { "use 8" \super th " partial fingerings" } }
+        \line { \concat { \bold "B" \bold \super \flat \bold " horn," " 7" \super th " partial:" } }
+        \line { \concat { "Use 8" \super th " partial fingerings" } }
         \line { "one half step up" }
       }
-      e
-      ees
-      d
-      des
-      c
+      e^+
+      ees^+
+      d^+
+      des^+
+      c^+
       \bar "|"
     }
   >>
@@ -395,13 +393,13 @@ staccatoExercise = \relative c'' {
   }
   \header {
     piece = \markup \concat { \box { A } " Short Pitch Bends" }
-    subpiece = \markup \wordwrap {
+    subpiece = \markup \justify {
       Begin by playing the pattern on valve horn,
       using the suggested fingerings
       with the bell open (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
-        \vspace #-1.4
+        \vspace #-1.7
         \musicglyph "scripts.open"
       }
       ).
@@ -409,7 +407,7 @@ staccatoExercise = \relative c'' {
       gradually transition from open to stopped (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
-        \vspace #-1.4
+        \vspace #-1.7
         \musicglyph "scripts.stopped"
       }
       ) and back,
@@ -420,71 +418,71 @@ staccatoExercise = \relative c'' {
   <<
     \figures {
       \bassFigureExtendersOn
-      <\markup \fingerBes 0/ \markup \fullopeninline>2
-      <\markup \fingerBes 2 \markup \fullopeninline>2
-      <\markup \fingerBes 0/ \markup \fullopeninline>2
-      <\markup \fingerBes 0/ \markup \fullstoppedinline>2
-      <\markup \fingerBes 0/ \markup \fullopeninline>2
+      <0/ \markup \fullopeninline>2
+      <2 \markup \fullopeninline>2
+      <0/ \markup \fullopeninline>2
+      <0/ \markup \fullstoppedinline>2
+      <0/ \markup \fullopeninline>2
       r2
-      <\markup \fingerBes 2 \markup \fullopeninline>2
-      <\markup \fingerBes 1 \markup \fullopeninline>2
-      <\markup \fingerBes 2 \markup \fullopeninline>2
-      <\markup \fingerBes 2 \markup \fullstoppedinline>2
-      <\markup \fingerBes 2 \markup \fullopeninline>2
+      <2 \markup \fullopeninline>2
+      <1 \markup \fullopeninline>2
+      <2 \markup \fullopeninline>2
+      <2 \markup \fullstoppedinline>2
+      <2 \markup \fullopeninline>2
       r2
-      <\markup \fingerBes 1 \markup \fullopeninline>2
-      <\markup \fingerBes 12 \markup \fullopeninline>2
-      <\markup \fingerBes 1 \markup \fullopeninline>2
-      <\markup \fingerBes 1 \markup \fullstoppedinline>2
-      <\markup \fingerBes 1 \markup \fullopeninline>2
+      <1 \markup \fullopeninline>2
+      <12 \markup \fullopeninline>2
+      <1 \markup \fullopeninline>2
+      <1 \markup \fullstoppedinline>2
+      <1 \markup \fullopeninline>2
       r2
-      <\markup \fingerBes 12 \markup \fullopeninline>2
-      <\markup \fingerBes 23 \markup \fullopeninline>2
-      <\markup \fingerBes 12 \markup \fullopeninline>2
-      <\markup \fingerBes 12 \markup \fullstoppedinline>2
-      <\markup \fingerBes 12 \markup \fullopeninline>2
+      <12 \markup \fullopeninline>2
+      <23 \markup \fullopeninline>2
+      <12 \markup \fullopeninline>2
+      <12 \markup \fullstoppedinline>2
+      <12 \markup \fullopeninline>2
       r2
-      <\markup \fingerBes 23 \markup \fullopeninline>2
-      <\markup \fingerBes 0/ \markup \fullopeninline>2
-      <\markup \fingerBes 23 \markup \fullopeninline>2
-      <\markup \fingerBes 23 \markup \fullstoppedinline>2
-      <\markup \fingerBes 23 \markup \fullopeninline>2
+      <23 \markup \fullopeninline>2
+      <0/ \markup \fullopeninline>2
+      <23 \markup \fullopeninline>2
+      <23 \markup \fullstoppedinline>2
+      <23 \markup \fullopeninline>2
       r2
-      <\markup \fingerF 1 \markup \fullopeninline>2
-      <\markup \fingerF 2 \markup \fullopeninline>2
-      <\markup \fingerF 1 \markup \fullopeninline>2
-      <\markup \fingerF 1 \markup \fullstoppedinline>2
-      <\markup \fingerF 1 \markup \fullopeninline>2
+      <1 \markup \fullopeninline>2
+      <2 \markup \fullopeninline>2
+      <1 \markup \fullopeninline>2
+      <1 \markup \fullstoppedinline>2
+      <1 \markup \fullopeninline>2
       r2
-      <\markup \fingerF 12 \markup \fullopeninline>2
-      <\markup \fingerF 1 \markup \fullopeninline>2
-      <\markup \fingerF 12 \markup \fullopeninline>2
-      <\markup \fingerF 12 \markup \fullstoppedinline>2
-      <\markup \fingerF 12 \markup \fullopeninline>2
+      <12 \markup \fullopeninline>2
+      <1 \markup \fullopeninline>2
+      <12 \markup \fullopeninline>2
+      <12 \markup \fullstoppedinline>2
+      <12 \markup \fullopeninline>2
       r2
-      <\markup \fingerF 23 \markup \fullopeninline>2
-      <\markup \fingerF 12 \markup \fullopeninline>2
-      <\markup \fingerF 23 \markup \fullopeninline>2
-      <\markup \fingerF 23 \markup \fullstoppedinline>2
-      <\markup \fingerF 23 \markup \fullopeninline>2
+      <23 \markup \fullopeninline>2
+      <12 \markup \fullopeninline>2
+      <23 \markup \fullopeninline>2
+      <23 \markup \fullstoppedinline>2
+      <23 \markup \fullopeninline>2
       r2
-      <\markup \fingerF 0/ \markup \fullopeninline>2
-      <\markup \fingerF 23 \markup \fullopeninline>2
-      <\markup \fingerF 0/ \markup \fullopeninline>2
-      <\markup \fingerF 0/ \markup \fullstoppedinline>2
-      <\markup \fingerF 0/ \markup \fullopeninline>2
+      <0/ \markup \fullopeninline>2
+      <23 \markup \fullopeninline>2
+      <0/ \markup \fullopeninline>2
+      <0/ \markup \fullstoppedinline>2
+      <0/ \markup \fullopeninline>2
       r2
-      <\markup \fingerF 2 \markup \fullopeninline>2
-      <\markup \fingerF 0/ \markup \fullopeninline>2
-      <\markup \fingerF 2 \markup \fullopeninline>2
-      <\markup \fingerF 2 \markup \fullstoppedinline>2
-      <\markup \fingerF 2 \markup \fullopeninline>2
+      <2 \markup \fullopeninline>2
+      <0/ \markup \fullopeninline>2
+      <2 \markup \fullopeninline>2
+      <2 \markup \fullstoppedinline>2
+      <2 \markup \fullopeninline>2
       r2
-      <\markup \fingerF 1 \markup \fullopeninline>2
-      <\markup \fingerF 2 \markup \fullopeninline>2
-      <\markup \fingerF 1 \markup \fullopeninline>2
-      <\markup \fingerF 1 \markup \fullstoppedinline>2
-      <\markup \fingerF 1 \markup \fullopeninline>2
+      <1 \markup \fullopeninline>2
+      <2 \markup \fullopeninline>2
+      <1 \markup \fullopeninline>2
+      <1 \markup \fullstoppedinline>2
+      <1 \markup \fullopeninline>2
       r2
     }
     \new Staff
@@ -496,6 +494,7 @@ staccatoExercise = \relative c'' {
 
       \time 4/4
       \tempo 4 = 120 - 176
+      \textMark \markup \italic \bold \concat { "B" \super \flat " horn" }
       f2\p(
       e |
       f\glissando\<
@@ -528,6 +527,7 @@ staccatoExercise = \relative c'' {
       des)\! r |
       \bar "||"
       \break
+      \textMark \markup \italic \bold "F horn"
       \textMark \markup \small "The following fingerings may be uncommon on open horn, but correspond to conventional stopped fingerings."
       c(
       b |
@@ -577,11 +577,11 @@ staccatoExercise = \relative c'' {
 \score {
   \header {
     piece = \markup \concat { \box { B } " Long Pitch Bends" }
-    subpiece = \markup \wordwrap {
+    subpiece = \markup \justify {
       As above, transitioning from open to echo (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
-        \vspace #-1.4
+        \vspace #-1.7
         \mostlystopped
       }
       ) to stopped and back.
@@ -591,65 +591,65 @@ staccatoExercise = \relative c'' {
   <<
     \figures {
       \bassFigureExtendersOn
-      <\markup \fingerF 0/ \fullopeninline>2
-      <\markup \fingerF 2 \fullopeninline>2
-      <\markup \fingerF 1 \fullopeninline>2
-      <\markup \fingerF 2 \fullopeninline>2
-      <\markup \fingerF 0/ \fullopeninline>2
-      <\markup \fingerF 0/ \mostlystoppedinline>2
-      <\markup \fingerF 0/ \fullstoppedinline>2
-      <\markup \fingerF 0/ \mostlystoppedinline>2
-      <\markup \fingerF 0/ \fullopeninline>2
+      <0/ \fullopeninline>2
+      <2 \fullopeninline>2
+      <1 \fullopeninline>2
+      <2 \fullopeninline>2
+      <0/ \fullopeninline>2
+      <0/ \mostlystoppedinline>2
+      <0/ \fullstoppedinline>2
+      <0/ \mostlystoppedinline>2
+      <0/ \fullopeninline>2
       r2
-      <\markup \fingerF 2 \fullopeninline>2
-      <\markup \fingerF 1 \fullopeninline>2
-      <\markup \fingerF 0/ \fullopeninline>2
-      <\markup \fingerF 1 \fullopeninline>2
-      <\markup \fingerF 2 \fullopeninline>2
-      <\markup \fingerF 2 \mostlystoppedinline>2
-      <\markup \fingerF 2 \fullstoppedinline>2
-      <\markup \fingerF 2 \mostlystoppedinline>2
-      <\markup \fingerF 2 \fullopeninline>2
+      <2 \fullopeninline>2
+      <1 \fullopeninline>2
+      <0/ \fullopeninline>2
+      <1 \fullopeninline>2
+      <2 \fullopeninline>2
+      <2 \mostlystoppedinline>2
+      <2 \fullstoppedinline>2
+      <2 \mostlystoppedinline>2
+      <2 \fullopeninline>2
       r2
-      <\markup \fingerF 1 \fullopeninline>2
-      <\markup \fingerF 0/ \fullopeninline>2
-      <\markup \fingerF 2 \fullopeninline>2
-      <\markup \fingerF 0/ \fullopeninline>2
-      <\markup \fingerF 1 \fullopeninline>2
-      <\markup \fingerF 1 \mostlystoppedinline>2
-      <\markup \fingerF 1 \fullstoppedinline>2
-      <\markup \fingerF 1 \mostlystoppedinline>2
-      <\markup \fingerF 1 \fullopeninline>2
+      <1 \fullopeninline>2
+      <0/ \fullopeninline>2
+      <2 \fullopeninline>2
+      <0/ \fullopeninline>2
+      <1 \fullopeninline>2
+      <1 \mostlystoppedinline>2
+      <1 \fullstoppedinline>2
+      <1 \mostlystoppedinline>2
+      <1 \fullopeninline>2
       r2
-      <\markup \fingerF 12 \fullopeninline>2
-      <\markup \fingerF 2 \fullopeninline>2
-      <\markup \fingerF 1 \fullopeninline>2
-      <\markup \fingerF 2 \fullopeninline>2
-      <\markup \fingerF 12 \fullopeninline>2
-      <\markup \fingerF 12 \mostlystoppedinline>2
-      <\markup \fingerF 12 \fullstoppedinline>2
-      <\markup \fingerF 12 \mostlystoppedinline>2
-      <\markup \fingerF 12 \fullopeninline>2
+      <12 \fullopeninline>2
+      <2 \fullopeninline>2
+      <1 \fullopeninline>2
+      <2 \fullopeninline>2
+      <12 \fullopeninline>2
+      <12 \mostlystoppedinline>2
+      <12 \fullstoppedinline>2
+      <12 \mostlystoppedinline>2
+      <12 \fullopeninline>2
       r2
-      <\markup \fingerF 0/ \fullopeninline>2
-      <\markup \fingerF 2 \fullopeninline>2
-      <\markup \fingerF 12 \fullopeninline>2
-      <\markup \fingerF 2 \fullopeninline>2
-      <\markup \fingerF 0/ \fullopeninline>2
-      <\markup \fingerF 0/ \mostlystoppedinline>2
-      <\markup \fingerF 0/ \fullstoppedinline>2
-      <\markup \fingerF 0/ \mostlystoppedinline>2
-      <\markup \fingerF 0/ \fullopeninline>2
+      <0/ \fullopeninline>2
+      <2 \fullopeninline>2
+      <12 \fullopeninline>2
+      <2 \fullopeninline>2
+      <0/ \fullopeninline>2
+      <0/ \mostlystoppedinline>2
+      <0/ \fullstoppedinline>2
+      <0/ \mostlystoppedinline>2
+      <0/ \fullopeninline>2
       r2
-      <\markup \fingerF 2 \fullopeninline>2
-      <\markup \fingerF 1 \fullopeninline>2
-      <\markup \fingerF 0/ \fullopeninline>2
-      <\markup \fingerF 1 \fullopeninline>2
-      <\markup \fingerF 2 \fullopeninline>2
-      <\markup \fingerF 2 \mostlystoppedinline>2
-      <\markup \fingerF 2 \fullstoppedinline>2
-      <\markup \fingerF 2 \mostlystoppedinline>2
-      <\markup \fingerF 2 \fullopeninline>2
+      <2 \fullopeninline>2
+      <1 \fullopeninline>2
+      <0/ \fullopeninline>2
+      <1 \fullopeninline>2
+      <2 \fullopeninline>2
+      <2 \mostlystoppedinline>2
+      <2 \fullstoppedinline>2
+      <2 \mostlystoppedinline>2
+      <2 \fullopeninline>2
       r2
     }
     \new Staff
@@ -659,6 +659,7 @@ staccatoExercise = \relative c'' {
 
       \time 4/4
       \tempo 4 = 120 - 176
+      \textMark \markup \italic \bold "F horn"
       g2\p(
       fis |
       f
@@ -733,18 +734,18 @@ staccatoExercise = \relative c'' {
 \pageBreak
 \score {
   \header {
-    piece = \markup \concat { \box { C } " Open and Stopped Staccato" }
-    subpiece = \markup \wordwrap {
+    piece = \markup \concat { \box { C } " Alternating Open and Stopped" }
+    subpiece = \markup \justify {
       Match intonation between open (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
-        \vspace #-1.4
+        \vspace #-1.7
         \musicglyph "scripts.open"
       }
       ) and stopped (
       \fontsize #1 \center-column {
         \musicglyph "noteheads.s1"
-        \vspace #-1.4
+        \vspace #-1.7
         \musicglyph "scripts.stopped"
       }
       ) tones.
