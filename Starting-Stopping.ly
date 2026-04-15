@@ -91,25 +91,51 @@ staccatoExercise = \relative c'' {
   The horn is unique among instruments in that the hand is placed in the bell while playing.
   Historically, this was done on valveless, or \italic natural, horns,
   to reach pitches in between those along the harmonic series.
-  Nowadays, on valve horns, the right hand is mostly used to make fine adjustments to intonation,
-  as well as playing stopped (
-  \center-column {
-    \musicglyph "noteheads.s1"
-    \vspace #-1.5
-    \musicglyph "scripts.stopped"
+  Nowadays, on valve horns, the right hand is mostly used to make intonation and timbre adjustments,
+  as well as playing stopped and echo tones.
+}
+\markup \null
+\markup \justify {
+  Stopped tones are notated as 
+  \concat {
+    \center-column {
+      \musicglyph "noteheads.s1"
+      \vspace #-1.5
+      \musicglyph "scripts.stopped"
+    }
+    ,
   }
-  ) and echo (
+  \italic stopped,
+  \italic gestopft (German),
+  \italic bouché (French) or
+  \italic chiuso (Italian).
+  A return to normal playing technique is indicated with
+  \concat {
+    \center-column {
+      \musicglyph "noteheads.s1"
+      \vspace #-1.5
+      \musicglyph "scripts.open"
+    }
+    ,
+  }
+  \italic open,
+  \italic offen (German),
+  \italic ouvert (French) or
+  \italic aperto (Italian).
+  Echo tones are less common, and accordingly,
+  notation for them is not as well established.
+  In this work,
   \center-column {
     \musicglyph "noteheads.s1"
     \vspace #-1.5
     \mostlystopped
   }
-  ) tones.
+  is used to indicate echo tones.
 }
 \markup \null
 \markup \justify {
   An everlasting source of confusion for new hornists
-  is whether stopping the bell raises or lowers the pitch produced.
+  is whether stopping the bell \italic raises or \italic lowers the pitch produced.
   By playing a long tone and gradually closing the bell,
   one may notice that the pitch bends down,
   and one can find a “mostly stopped” position that reliably flattens the horn by a half step.
@@ -132,9 +158,16 @@ staccatoExercise = \relative c'' {
   }
   <<
     \figures {
-      <\markup \fullopeninline>1*2
-      <\markup \mostlystoppedinline>1*2
-      <\markup \fullstoppedinline>1*2
+      \bassFigureExtendersOn
+      \repeat unfold 4 {
+        <\markup \fullopeninline>2
+      }
+      \repeat unfold 4 {
+        <\markup \mostlystoppedinline>2
+      }
+      \repeat unfold 4 {
+        <\markup \fullstoppedinline>2
+      }
     }
     \new Staff
     \relative c'' {
@@ -142,6 +175,7 @@ staccatoExercise = \relative c'' {
       \set Score.timing = ##f
       \omit Staff.TimeSignature
       \textMark \markup \small \italic "open"
+      \textMark \markup \small \bold \italic "F horn"
       e4( d c beseh g e c2)
       \bar "|"
       \textMark \markup \small \italic "echo (mostly stopped)"
@@ -156,10 +190,14 @@ staccatoExercise = \relative c'' {
 \markup \justify {
   So what is happening here?
   Each open tone on the F horn indeed has a corresponding stopped tone a half step up,
-  but the stopped tone actually comes from bending down the next highest partial—a hidden barber pole effect.
+  but an open pitch can’t be bent upward.
+  The stopped tone actually comes from bending down the next highest partial—a barber pole effect.
   Closing the bell lowers the pitch, all the way down to
   \italic { one half step above the next lowest partial }
   (or, on the \concat { B \super \flat } horn, a noticeably out-of-tune ¾ step above it).
+}
+\markup \null
+\markup \justify {
   For example,
   the \concat { 5 \super th } and \concat { 6 \super th } partials produce an open E and G,
   respectively.
@@ -201,6 +239,7 @@ staccatoExercise = \relative c'' {
       \override Glissando.thickness = #2
 
       \textMark \markup \small \italic \concat { 11 \super th " partial" }
+      \textMark \markup \small \bold \italic "F horn"
       \once \override Glissando.bound-details.left.Y = #2.25
       \once \override Glissando.bound-details.right.Y = #1.75
       fih2*2\glissando
@@ -257,57 +296,52 @@ staccatoExercise = \relative c'' {
       \omit BarNumber
     }
   }
-  <<
-    \figures {
-      \bassFigureExtendersOn
-      <0/>2
-      <2>2
-      <0/>2
-      <2>2
-      <0/>2
-      <2>2
-      <1>2
-      <12>2
-      <23>2
-      <0/>2
-      <2>2
-      <1>2
-      <0/>2
-      <2>2
-      <1>2
-      <12>2
-      <0/>2
-      <2>2
-    }
-    \new Staff
-    \relative c'' {
-      \set Score.timing = ##f
-      \omit Staff.TimeSignature
-      \override Stem.length = 0
+  \new Staff
+  \relative c'' {
+    \set Score.timing = ##f
+    \omit Staff.TimeSignature
+    \override Stem.length = 0
 
-      \clef treble
-      \textMark \markup \small \italic \bold "F horn"
-      f4*2^+
-      e^+
-      ees^+
-      d^+
-      des^+
-      c^+
-      b^+
-      bes^+
-      a^+
-      aes^+
-      g^+
-      fis^+
-      f^+
-      e^+
-      ees^+
-      d^+
-      des^+
-      c^+
-      s4_\markup \bold \lower #1 "…"
-    }
-  >>
+    \clef treble
+    \textMark \markup \small \italic \bold "F horn"
+    \centermarkupStopped
+    f4*2^+^\markup \fingerO
+    \centermarkupStopped
+    e^+^\markup \fingerB
+    \centermarkupStopped
+    ees^+^\markup \fingerO
+    \centermarkupStopped
+    d^+^\markup \fingerB
+    \centermarkupStopped
+    des^+^\markup \fingerO
+    \centermarkupStopped
+    c^+^\markup \fingerB
+    \centermarkupStopped
+    b^+^\markup \fingerA
+    \centermarkupStopped
+    bes^+^\markup \fingerAB
+    \centermarkupStopped
+    a^+^\markup \fingerBC
+    \centermarkupStopped
+    aes^+^\markup \fingerO
+    \centermarkupStopped
+    g^+^\markup \fingerB
+    \centermarkupStopped
+    fis^+^\markup \fingerA
+    \centermarkupStopped
+    f^+^\markup \fingerO
+    \centermarkupStopped
+    e^+^\markup \fingerB
+    \centermarkupStopped
+    ees^+^\markup \fingerA
+    \centermarkupStopped
+    d^+^\markup \fingerAB
+    \centermarkupStopped
+    des^+^\markup \fingerO
+    \centermarkupStopped
+    c^+^\markup \fingerB
+    s4_\markup \bold \lower #1 "…"
+  }
 }
 \markup \justify {
   Though a limited set of fingerings can counteract the out-of-tune
@@ -326,55 +360,53 @@ staccatoExercise = \relative c'' {
       \omit BarNumber
     }
   }
-  <<
-    \figures {
-      \bassFigureExtendersOn
-      <0/>2
-      <2>2
-      <1>2
-      <12>2
-      <23>2
-      <13>2
-      <123>2
-      <0/>2
-      <2>2
-      <1>2
-      <12>2
-      <23>2
-    }
-    \new Staff
-    \relative c''' {
-      \set Score.timing = ##f
-      \omit Staff.TimeSignature
-      \override Stem.length = 0
+  \new Staff
+  \relative c''' {
+    \set Score.timing = ##f
+    \omit Staff.TimeSignature
+    \override Stem.length = 0
 
-      \clef treble
-      \textMark \markup \small \italic \override #'(baseline-skip . 2.5) \column {
-        \line { \concat { \bold "B" \bold \super \flat \bold " horn," " 11" \super th " partial:" } }
-        \line { \concat { "Use 12" \super th " partial fingerings" } }
-        \line { "for the same pitch" }
-      }
-      c4*2^+
-      b^+
-      bes^+
-      a^+
-      aes^+
-      g^+
-      fis^+
-      \bar "|"
-      \textMark \markup \small \italic \override #'(baseline-skip . 2.5) \column {
-        \line { \concat { \bold "B" \bold \super \flat \bold " horn," " 7" \super th " partial:" } }
-        \line { \concat { "Use 8" \super th " partial fingerings" } }
-        \line { "one half step up" }
-      }
-      e^+
-      ees^+
-      d^+
-      des^+
-      c^+
-      \bar "|"
+    \clef treble
+    \textMark \markup \small \italic \bold \concat { "B" \super \flat " horn" }
+    \tweak direction #DOWN
+    \textMark \markup \small \italic \override #'(baseline-skip . 2.5) \column {
+      \line { \concat { "11" \super th " partial:" } }
+      \line { \concat { "Use 12" \super th " partial fingerings" } }
+      \line { "for the same pitch" }
     }
-  >>
+    \centermarkupStopped
+    c4*2^+^\markup \fingerO
+    \centermarkupStopped
+    b^+^\markup \fingerB
+    \centermarkupStopped
+    bes^+^\markup \fingerA
+    \centermarkupStopped
+    a^+^\markup \fingerAB
+    \centermarkupStopped
+    aes^+^\markup \fingerBC
+    \centermarkupStopped
+    g^+^\markup \fingerAC
+    \centermarkupStopped
+    fis^+^\markup \fingerABC
+    \bar "|"
+    \tweak direction #DOWN
+    \textMark \markup \small \italic \override #'(baseline-skip . 2.5) \column {
+      \line { \concat { "7" \super th " partial:" } }
+      \line { \concat { "Use 8" \super th " partial fingerings" } }
+      \line { "one half step up" }
+    }
+    \centermarkupStopped
+    e^+^\markup \fingerO
+    \centermarkupStopped
+    ees^+^\markup \fingerB
+    \centermarkupStopped
+    d^+^\markup \fingerA
+    \centermarkupStopped
+    des^+^\markup \fingerAB
+    \centermarkupStopped
+    c^+^\markup \fingerBC
+    \bar "|"
+  }
 }
 \markup \null
 \pageBreak
@@ -527,8 +559,8 @@ staccatoExercise = \relative c'' {
       des)\! r |
       \bar "||"
       \break
-      \textMark \markup \italic \bold "F horn"
       \textMark \markup \small "The following fingerings may be uncommon on open horn, but correspond to conventional stopped fingerings."
+      \textMark \markup \italic \bold "F horn"
       c(
       b |
       c\glissando\<
